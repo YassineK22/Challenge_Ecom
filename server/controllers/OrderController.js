@@ -3,7 +3,6 @@ const Order = require("../models/Order");
 const Product = require("../models/Product");
 const Cart = require("../models/Cart");
 const { User } = require("../models/User");
-const { sendOrderConfirmationEmail } = require("../services/emailService");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // Create a new order
@@ -85,10 +84,6 @@ const createOrder = async (req, res) => {
     const populatedOrder = await Order.findById(savedOrder._id)
       .populate("userId", "name email")
       .populate("items.productId", "name images price");
-
-    sendOrderConfirmationEmail(user.email, populatedOrder, user).catch((err) =>
-      console.error("Email error:", err)
-    );
 
     res.status(201).json({
       message: "Order created successfully",

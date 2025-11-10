@@ -26,7 +26,28 @@ require("./routes/Auth.routes")(app);
 const AdminRoutes = require("./routes/Admin.routes");
 const UserRoutes = require("./routes/User.routes");
 const AuthRoutes = require("./routes/Auth.routes");
+require("./routes/Category.routes")(app);
 
+
+const promotionRoutes = require("./routes/Promotion.routes");
+const reviewRoutes = require("./routes/Review.routes");
+const productRoutes = require("./routes/Product.routes");
+const productTagRoutes = require("./routes/productTag.routes");
+const cartRoutes = require("./routes/Cart.routes");
+const orderRoutes = require("./routes/Order.routes");
+const wishlistRoutes = require("./routes/Wishlist.routes");
+const paymenetRoutes = require("./routes/payment.routes");
+
+
+
+app.use("/api/promotions", promotionRoutes);
+app.use("/api/reviews", reviewRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/product-tags", productTagRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/payments", paymenetRoutes);
 app.use("/api/admin", AdminRoutes);
 app.use("/api/user", UserRoutes);
 app.use("/api/auth", AuthRoutes);

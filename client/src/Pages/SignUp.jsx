@@ -72,7 +72,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-blue-50 to-purple-50">
       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md border border-gray-100">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Ecom Logo" className="h-20" />

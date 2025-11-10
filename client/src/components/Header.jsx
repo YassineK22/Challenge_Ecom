@@ -52,23 +52,20 @@ const Header = () => {
     i18n.changeLanguage(lng);
   };
 
-  if (
-    currentUser &&
-    (currentUser.role === "seller" ||
-      currentUser.role === "delivery" ||
-      currentUser.role === "admin")
-  ) {
+  if (currentUser && currentUser.role === "admin") {
     return null;
   }
 
   return (
     <div
       className="navbar bg-white shadow-md px-4 sm:px-8 py-3 sticky top-0 z-50"
-      data-theme="light">
+      data-theme="light"
+    >
       <div className="flex-1 flex items-center">
         <button
           onClick={() => navigate("/")}
-          className="text-2xl font-bold text-primary hover:text-primary-focus transition-colors duration-200 pr-4 cursor-pointer">
+          className="text-2xl font-bold text-primary hover:text-primary-focus transition-colors duration-200 pr-4 cursor-pointer"
+        >
           <img src={logo} alt="Ecom Logo" className="h-14 sm:h-16" />
         </button>
         <AllCategories />
@@ -82,7 +79,8 @@ const Header = () => {
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-sm gap-1 normal-case">
+            className="btn btn-ghost btn-sm gap-1 normal-case"
+          >
             {i18n.language === "en" ? (
               <>
                 <span className="fi fi-us fis"></span>
@@ -104,19 +102,22 @@ const Header = () => {
               xmlns="http://www.w3.org/2000/svg"
               width="12"
               height="12"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <path d="M7 10l5 5 5-5z" />
             </svg>
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-white rounded-box w-40 border border-gray-100 mt-2">
+            className="dropdown-content menu p-2 shadow bg-white rounded-box w-40 border border-gray-100 mt-2"
+          >
             <li>
               <button
                 className={`flex items-center ${
                   i18n.language === "en" ? "active bg-gray-100" : ""
                 }`}
-                onClick={() => changeLanguage("en")}>
+                onClick={() => changeLanguage("en")}
+              >
                 <span className="fi fi-us fis mr-2"></span>
                 English (US)
               </button>
@@ -126,7 +127,8 @@ const Header = () => {
                 className={`flex items-center ${
                   i18n.language === "fr" ? "active bg-gray-100" : ""
                 }`}
-                onClick={() => changeLanguage("fr")}>
+                onClick={() => changeLanguage("fr")}
+              >
                 <span className="fi fi-fr fis mr-2"></span>
                 Français
               </button>
@@ -136,7 +138,8 @@ const Header = () => {
                 className={`flex items-center ${
                   i18n.language === "ar" ? "active bg-gray-100" : ""
                 }`}
-                onClick={() => changeLanguage("ar")}>
+                onClick={() => changeLanguage("ar")}
+              >
                 <span className="fi fi-sa fis mr-2"></span>
                 العربية (AR)
               </button>
@@ -150,7 +153,8 @@ const Header = () => {
           onClick={() => navigate("/wishlist")}
           aria-label={t("header.wishlist")}
           onMouseEnter={() => setIsWishlistHovered(true)}
-          onMouseLeave={() => setIsWishlistHovered(false)}>
+          onMouseLeave={() => setIsWishlistHovered(false)}
+        >
           {isWishlistHovered || wishlistCount > 0 ? (
             <FaHeart className="h-5 w-5 text-pink-500" />
           ) : (
@@ -170,7 +174,8 @@ const Header = () => {
             role="button"
             className="p-2 rounded-full hover:bg-purple-50 transition-colors duration-200 relative"
             onMouseEnter={() => setIsCartHovered(true)}
-            onMouseLeave={() => setIsCartHovered(false)}>
+            onMouseLeave={() => setIsCartHovered(false)}
+          >
             <FaShoppingCart
               className={`h-5 w-5 ${
                 isCartHovered || cartCount > 0
@@ -186,7 +191,8 @@ const Header = () => {
           </div>
           <div
             tabIndex={0}
-            className="dropdown-content z-[1] mt-3 w-80 bg-white shadow-lg border border-gray-100 rounded-lg overflow-hidden">
+            className="dropdown-content z-1 mt-3 w-80 bg-white shadow-lg border border-gray-100 rounded-lg overflow-hidden"
+          >
             <div className="p-4">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="font-bold text-lg text-gray-800">
@@ -204,8 +210,9 @@ const Header = () => {
                     {cartItems.slice(0, 3).map((item) => (
                       <div
                         key={item._id}
-                        className="flex items-center gap-3 py-3 border-b border-gray-100 last:border-0">
-                        <div className="w-12 h-12 flex-shrink-0 rounded-md overflow-hidden border border-gray-200">
+                        className="flex items-center gap-3 py-3 border-b border-gray-100 last:border-0"
+                      >
+                        <div className="w-12 h-12 shrink-0 rounded-md overflow-hidden border border-gray-200">
                           <img
                             src={
                               item.productId?.images?.[0]?.url ||
@@ -232,7 +239,8 @@ const Header = () => {
                           onClick={(e) => {
                             e.stopPropagation();
                           }}
-                          className="text-gray-400 hover:text-red-500 transition-colors">
+                          className="text-gray-400 hover:text-red-500 transition-colors"
+                        >
                           <FaTimes className="w-3 h-3" />
                         </button>
                       </div>
@@ -255,7 +263,8 @@ const Header = () => {
                     </div>
                     <button
                       className="btn btn-block bg-purple-600 hover:bg-purple-700 text-white border-0"
-                      onClick={() => navigate("/cart")}>
+                      onClick={() => navigate("/cart")}
+                    >
                       {t("header.viewCart")}
                     </button>
                   </div>
@@ -265,7 +274,8 @@ const Header = () => {
                   <p className="text-gray-500 mb-3">{t("header.emptyCart")}</p>
                   <button
                     className="btn btn-sm bg-purple-600 hover:bg-purple-700 text-white border-0"
-                    onClick={() => navigate("/")}>
+                    onClick={() => navigate("/")}
+                  >
                     {t("header.startShopping")}
                   </button>
                 </div>
@@ -291,18 +301,21 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 border border-gray-100 mt-2">
+              className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 border border-gray-100 mt-2"
+            >
               <li>
                 <button
                   className="hover:bg-gray-50 rounded-md"
-                  onClick={() => navigate("/profile")}>
+                  onClick={() => navigate("/profile")}
+                >
                   {t("header.myProfile")}
                 </button>
               </li>
               <li>
                 <button
                   className="hover:bg-gray-50 rounded-md text-red-500"
-                  onClick={signOut}>
+                  onClick={signOut}
+                >
                   {t("header.logout")}
                 </button>
               </li>
@@ -312,35 +325,10 @@ const Header = () => {
           <>
             <button
               onClick={() => navigate("/login")}
-              className="btn btn-outline btn-primary btn-sm sm:btn-md">
+              className="btn btn-outline btn-primary btn-sm sm:btn-md"
+            >
               {t("header.signIn")}
             </button>
-            <div className="dropdown dropdown-end hidden sm:block">
-              <label tabIndex={0} className="btn btn-primary btn-sm sm:btn-md">
-                <FaUserPlus className="mr-2" />
-                {t("header.joinUs")}
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-white rounded-box w-52 border border-gray-100 mt-2">
-                <li>
-                  <button
-                    className="hover:bg-gray-50 rounded-md"
-                    onClick={() => navigate("/become-seller")}>
-                    <FaStore className="mr-2 text-purple-600" />{" "}
-                    {t("header.becomeSeller")}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="hover:bg-gray-50 rounded-md"
-                    onClick={() => navigate("/join-delivery-team")}>
-                    <FaTruck className="mr-2 text-blue-600" />{" "}
-                    {t("header.deliveryTeam")}
-                  </button>
-                </li>
-              </ul>
-            </div>
           </>
         )}
       </div>

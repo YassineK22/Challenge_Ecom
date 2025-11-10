@@ -28,7 +28,7 @@ function App() {
       />
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/homePage" />} />
         <Route path="/homePage" element={<Home />} />
 
         {/* Authentication routes (only for non-logged in users) */}

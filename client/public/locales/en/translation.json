@@ -61,7 +61,7 @@
       }
     },
     "footer": {
-      "companyName": "Electsy",
+      "companyName": "E-Challenge",
       "description": "Your one-stop shop for all the latest electronics and gadgets.",
       "sections": {
         "shop": "Shop",
@@ -89,7 +89,7 @@
         "termsOfService": "Terms of Service",
         "blog": "Blog"
       },
-      "copyright": "© 2025 Electsy. All rights reserved."
+      "copyright": "© 2025 E-Challenge. All rights reserved."
     }
   },
     "featuredProducts": {
@@ -159,7 +159,7 @@
     "signInButton": "Sign In",
     "signingIn": "Signing In...",
     "orDivider": "OR",
-    "newUserPrompt": "New to Electsy?",
+    "newUserPrompt": "New to E-Challenge?",
     "createAccount": "Create an account",
     "success": "Login successful!",
     "error": "Something went wrong!"

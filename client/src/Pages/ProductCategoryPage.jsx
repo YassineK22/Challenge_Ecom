@@ -1,0 +1,199 @@
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { FaSpinner, FaShoppingBag } from "react-icons/fa";
+import ProductCard from "../components/ProductCard";
+import BreadcrumbNav from "../components/BreadcrumbNav";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+
+const ProductCategoryPage = () => {
+  const { t } = useTranslation();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const location = useLocation();
+  const { currentUser } = useSelector((state) => state.user);
+  const wishlistItems = useSelector((state) => state.wishlist.items || []);
+  const dispatch = useDispatch();
+
+  const API_URL = "http://localhost:8000/api/wishlist";
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const query = new URLSearchParams(location.search);
+        const category = query.get("category");
+        const group = query.get("group");
+        const item = query.get("item");
+
+        let url = "http://localhost:8000/api/products/by-category?";
+        if (category) url += `categoryDetails=${encodeURIComponent(category)}`;
+        if (group) url += `&group=${encodeURIComponent(group)}`;
+        if (item) url += `&item=${encodeURIComponent(item)}`;
+
+        const response = await axios.get(url);
+        const data = Array.isArray(response.data.products)
+          ? response.data.products
+          : response.data;
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setError(
+          error.response?.data?.message || t("productCategory.errors.loadError")
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchWishlist = async () => {
+      if (currentUser) {
+        try {
+          const response = await axios.get(`${API_URL}?userId=${currentUser.id}`);
+          dispatch({
+            type: "wishlist/setWishlist",
+            payload: response.data.items.map((item) => ({
+              ...item,
+              price: item.price || item.productId?.price || 0,
+              stock: item.stock || item.productId?.stock || 0,
+              productId: {
+                ...item.productId,
+                reviews: item.productId.reviews || [],
+                promotions: item.productId.promotions || [],
+              },
+            })),
+          });
+        } catch (err) {
+          toast.error(t("productCategory.errors.wishlist.loadError"));
+        }
+      }
+    };
+
+    fetchProducts();
+    fetchWishlist();
+  }, [location.search, currentUser, dispatch, t]);
+
+  const handleWishlistToggle = async (productId, isAdded) => {
+    if (!currentUser) {
+      toast.error(t("productCategory.errors.wishlist.loginRequired"));
+      return;
+    }
+
+    try {
+      if (isAdded) {
+        const product = products.find((p) => p._id === productId);
+        const response = await axios.post(`${API_URL}/add`, {
+          userId: currentUser.id,
+          productId,
+          price: product?.price || 0,
+          stock: product?.stock || 0,
+        });
+
+        dispatch({
+          type: "wishlist/addItem",
+          payload: response.data.wishlist.items[
+            response.data.wishlist.items.length - 1
+          ],
+        });
+        toast.success(t("productCategory.errors.wishlist.addSuccess"));
+      } else {
+        const response = await axios.get(`${API_URL}?userId=${currentUser.id}`);
+        const wishlist = response.data;
+        const item = wishlist.items.find(
+          (item) => item.productId._id === productId
+        );
+        if (item) {
+          await axios.delete(`${API_URL}/item`, {
+            data: { userId: currentUser.id, itemId: item._id },
+          });
+          dispatch({ type: "wishlist/removeItem", payload: item._id });
+          toast.success(t("productCategory.errors.wishlist.removeSuccess"));
+        }
+      }
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message ||
+          t("productCategory.errors.wishlist.error")
+      );
+    }
+  };
+
+  return (
+    <div className="container mx-auto px-4 sm:px-6 py-8">
+      <BreadcrumbNav />
+
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-0 capitalize">
+          {new URLSearchParams(location.search).get("item") ||
+            new URLSearchParams(location.search).get("group") ||
+            new URLSearchParams(location.search).get("category") ||
+            t("productCategory.title")}
+        </h1>
+      </div>
+
+      {loading ? (
+        <div className="flex flex-col items-center justify-center min-h-[300px] space-y-4">
+          <FaSpinner className="animate-spin text-3xl text-[#4C0ADA]" />
+          <p className="text-gray-600">{t("productCategory.loading")}</p>
+        </div>
+      ) : error ? (
+        <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-lg">
+          <h3 className="text-sm font-medium text-red-800">
+            {t("productCategory.errors.loadError")}
+          </h3>
+          <p className="mt-1 text-sm text-red-700">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-2 text-sm font-medium text-red-700 hover:text-red-600"
+          >
+            {t("cart.errors.tryAgain")}
+          </button>
+        </div>
+      ) : products.length > 0 ? (
+        <>
+          <div className="mb-6 flex items-center justify-between">
+            <p className="text-gray-600 text-sm">
+              {t("productCategory.showing")}{" "}
+              <span className="font-medium text-gray-900">{products.length}</span>{" "}
+              {t("productCategory.products")}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {products.map((product) => {
+              const isWishlisted = wishlistItems.some(
+                (item) => item.productId._id === product._id
+              );
+              return (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  isWishlisted={isWishlisted}
+                  onWishlistToggle={handleWishlistToggle}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <div className="max-w-md mx-auto text-center py-12 px-4 sm:px-6 lg:px-8">
+          <div className="w-32 h-32 mx-auto mb-6 bg-[#4C0ADA]/10 rounded-full flex items-center justify-center">
+            <FaShoppingBag className="w-16 h-16 text-[#4C0ADA]" />
+          </div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">
+            {t("productCategory.noProducts.title")}
+          </h3>
+          <p className="text-gray-600 mb-8">
+            {t("productCategory.noProducts.description")}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductCategoryPage;

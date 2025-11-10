@@ -38,13 +38,8 @@ const SignIn = () => {
       dispatch(signInSuccess(response.data.user));
       toast.success(t("signIn.success"));
 
-      if (response.data.user.role === "seller") {
-        navigate("/seller-dashboard");
-      } else if (response.data.user.role === "delivery") {
-        navigate("/delivery-dashboard");
-      } else {
-        navigate("/");
-      }
+      navigate("/");
+      
     } catch (err) {
       const errorMessage = err.response?.data?.message || t("signIn.error");
       dispatch(signInFailure(errorMessage));
@@ -53,7 +48,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-blue-50 to-purple-50">
       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md border border-gray-100">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Ecom Logo" className="h-20" />
@@ -126,9 +121,9 @@ const SignIn = () => {
         </form>
 
         <div className="flex items-center my-6">
-          <div className="flex-grow border-t border-gray-200"></div>
+          <div className="grow border-t border-gray-200"></div>
           <span className="mx-4 text-gray-400">{t("signIn.orDivider")}</span>
-          <div className="flex-grow border-t border-gray-200"></div>
+          <div className="grow border-t border-gray-200"></div>
         </div>
 
         <OAuth />
