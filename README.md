@@ -74,61 +74,61 @@ STRIPE_SECRET_KEY=<your_stripe_secret_key>
 
 ---
 
-## Visitor Dashbord
+# Visitor Dashbord
 
-Sign In
+## Sign In
 ![alt text](image-14.png)
 
-Create an Account
+## Create an Account
 ![alt text](image-15.png)
 
-Home
+## Home
 ![alt text](image-7.png)
 
-Language Translate dropdown
+## Language Translate dropdown
 ![alt text](image-8.png)
 
-Search By Category
+## Search By Category
 ![alt text](image-9.png)
 
-Search by product
+## Search by product
 ![alt text](image-11.png)
 
-Recent Search
+## Recent Search
 ![alt text](image-10.png)
 
-Flash Sale (Promo Prducts)
+## Flash Sale (Promo Prducts)
 ![alt text](image-12.png)
 
-Featured Products
+## Featured Products
 ![alt text](image-13.png)
 
 ---
 
-## User Dashbord
+# User Dashbord
 
-Wishlist Page
+## Wishlist Page
 ![alt text](image-16.png)
 
-Cart DropDown
+## Cart DropDown
 ![alt text](image-17.png)
 
-Personal Information
+## Personal Information
 ![alt text](image-18.png)
 
-Edit Personal Information
+## Edit Personal Information
 ![alt text](image-19.png)
 
-WishlistProfil
+## WishlistProfil
 ![alt text](image-20.png)
 
-Manage Orders
+## Manage Orders
 ![alt text](image-21.png)
 
-ChekoutPage
+## ChekoutPage
 ![alt text](image-22.png)
 
-ChekoutSteps
+## ChekoutSteps
 ![alt text](image-23.png)
 
 ![alt text](image-24.png)
@@ -137,36 +137,36 @@ ChekoutSteps
 
 ![alt text](image-26.png)
 
-Order Tracking
+## Order Tracking
 ![alt text](image-27.png)
 
 
 ---
 
-## 🛠 Admin Dashbord
+# 🛠 Admin Dashbord
 
-Main Dashbord
+## Main Dashbord
 ![alt text](image-5.png)
 
-Users Dashbord
+## Users Dashbord
 ![alt text](image-4.png)
 
-Products Dashbord
+## Products Dashbord
 ![alt text](image-3.png)
 
-Add Product
+## Add Product
 ![alt text](image-6.png)
 
-Create Promotion
+## Create Promotion
 ![alt text](image-1.png)
 
-Manage Orders
+## Manage Orders
 ![alt text](image.png)
 
-## Third-party Services (API)
+# Third-party Services (API)
 
-Stripe: Payment processing and checkout API
+# Stripe: Payment processing and checkout API
 ![alt text](image-2.png)
 
-Cloudinary: Media storage (Cloud)
+# Cloudinary: Media storage (Cloud)
 ![alt text](image-28.png)
