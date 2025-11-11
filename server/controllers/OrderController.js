@@ -138,7 +138,9 @@ const getUserOrders = async (req, res) => {
 // 🔄 Update order status (admin only)
 const updateOrderStatus = async (req, res) => {
   try {
-    const { orderId, status } = req.body;
+    const { orderId } = req.params;
+    const { status } = req.body;
+
 
     if (!mongoose.Types.ObjectId.isValid(orderId))
       return res.status(400).json({ message: "Invalid orderId" });
@@ -202,10 +204,43 @@ const deleteOrder = async (req, res) => {
   }
 };
 
+// Get all orders (admin)
+const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find()
+      .populate("userId", "name email")
+      .populate("items.productId", "name images price")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch orders", error: error.message });
+  }
+};
+
+const getOrderStats = async (req, res) => {
+  try {
+    const totalOrders = await Order.countDocuments();
+    const pending = await Order.countDocuments({ status: 'pending' });
+    const processing = await Order.countDocuments({ status: 'processing' });
+    const shipped = await Order.countDocuments({ status: 'shipped' });
+    const delivered = await Order.countDocuments({ status: 'delivered' });
+
+    res.status(200).json({
+      stats: { totalOrders, pending, processing, shipped, delivered },
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch stats', error: error.message });
+  }
+};
+
 module.exports = {
   createOrder,
   getOrderById,
   getUserOrders,
   updateOrderStatus,
   deleteOrder,
+  getAllOrders,
+  getOrderStats,
 };

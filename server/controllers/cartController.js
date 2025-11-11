@@ -44,9 +44,6 @@ exports.addToCart = async (req, res) => {
       }
     }
 
-    if (Math.abs(price - finalPrice) > 0.01)
-      return res.status(400).json({ success: false, message: "Provided price does not match current price" });
-
     let cart = await Cart.findOne({ userId });
 
     if (!cart) {

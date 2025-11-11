@@ -111,6 +111,27 @@ const ProductDetailsPage = () => {
     }
   }, [location.state, loading]);
 
+  const activePromotion = product?.activePromotion;
+  const hasDiscount = !!activePromotion; // true if activePromotion exists
+
+  const currentPrice = hasDiscount
+    ? (product.price * (1 - activePromotion.discountRate / 100)).toFixed(2)
+    : product?.price?.toFixed(2);
+
+  const originalPrice = hasDiscount ? product.price.toFixed(2) : null;
+  const discountRate = hasDiscount ? activePromotion.discountRate : 0;
+  const promotionName = hasDiscount
+    ? activePromotion.name || t("product.specialOffer")
+    : "";
+  const promotionEndDate = hasDiscount
+    ? new Date(activePromotion.endDate).toLocaleDateString(navigator.language, {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "";
+  const promotionImage = hasDiscount ? activePromotion.image?.url : null;
+
   const getKeyFeatures = () => {
     if (!product?.description) return [];
     return product.description
@@ -119,40 +140,52 @@ const ProductDetailsPage = () => {
       .slice(0, 5);
   };
 
-  // 🛒 Add to cart
-  const handleAddToCart = async () => {
-    if (!currentUser) return toast.error(t("product.mustLogin"));
-    if (!product.stock || product.stock < quantity)
-      return toast.error(t("product.outOfStock"));
+  const handleAddToCart = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!currentUser) {
+      toast.error(t("productCard.cart.loginRequired"));
+      return;
+    }
+
+    if (!product.stock || product.stock < quantity) {
+      toast.error(t("productCard.cart.outOfStock"));
+      return;
+    }
 
     try {
       const response = await axios.post(`${API_URL}/cart/add`, {
         userId: currentUser.id,
         productId: product._id,
         quantity,
-        price: product.price,
+        price: currentPrice,
         variantId: selectedVariant?._id,
       });
 
-      // ✅ Correct access to items
-      const cartData = response.data.data; // <--- your API returns the cart in data
-      const newItem = cartData.items.at(-1);
+      const cartData = response.data.data || response.data.cart || {};
+      const newItem = (cartData.items || []).at(-1);
+
+      if (!newItem) throw new Error("Cart item not returned by API");
 
       dispatch(
         addCartItem({
           ...newItem,
-          productId: product, // attach product details for frontend
-          price: product.price,
+          productId: {
+            ...product,
+            price: parseFloat(currentPrice),
+            stock: product.stock,
+          },
+          price: parseFloat(currentPrice),
           stock: product.stock,
           variantId: selectedVariant?._id,
         })
       );
 
-      toast.success(t("product.addedToCart"), {
-        position: "bottom-right",
-      });
+      toast.success(t("productCard.cart.success"));
     } catch (err) {
-      toast.error(err.response?.data?.message || t("product.cartError"));
+      console.error("Add to cart error:", err);
+      toast.error(err.response?.data?.message || t("productCard.cart.error"));
     }
   };
 
@@ -271,15 +304,36 @@ const ProductDetailsPage = () => {
               </div>
 
               <div className="mb-4">
-                <span className="text-3xl font-bold">
-                  ${product.price.toFixed(2)}
-                </span>
-                {product.discount && (
-                  <span className="ml-2 text-red-500 text-sm">
-                    -{product.discount}% {t("product.off")}
-                  </span>
+                <span className="text-3xl font-bold">${currentPrice}</span>
+                {hasDiscount && (
+                  <div className="mt-1 flex items-center gap-2 text-sm">
+                    {originalPrice && (
+                      <span className="line-through text-gray-400">
+                        ${originalPrice}
+                      </span>
+                    )}
+                    <span className="text-red-500 font-medium">
+                      -{discountRate}% {t("product.off")}
+                    </span>
+                  </div>
                 )}
               </div>
+
+              {hasDiscount && (
+                <div className="flex items-center gap-2 mt-2 text-sm text-gray-600">
+                  {promotionImage && (
+                    <img
+                      src={promotionImage}
+                      alt={promotionName}
+                      className="w-8 h-8 object-cover rounded"
+                    />
+                  )}
+                  <span>
+                    <strong>{promotionName}</strong> • {t("product.ends")}{" "}
+                    {promotionEndDate}
+                  </span>
+                </div>
+              )}
 
               {keyFeatures.length > 0 && (
                 <div className="mb-6">

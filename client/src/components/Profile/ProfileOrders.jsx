@@ -9,6 +9,7 @@ import {
   FaChevronDown,
   FaChevronUp,
   FaStar,
+  FaTruck,
 } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -44,6 +45,10 @@ const ProfileOrders = () => {
     fetchOrders();
   }, [currentUser, t]);
 
+  const handleTrackOrder = (orderId) => {
+    navigate(`/trackOrder/${orderId}`);
+  };
+
   const handleCancelOrder = async (orderId) => {
     if (!window.confirm(t("profile.orders.confirmCancel"))) return;
 
@@ -51,11 +56,15 @@ const ProfileOrders = () => {
       await axios.delete(`http://localhost:8000/api/orders/${orderId}`);
       toast.success(t("profile.orders.cancelSuccess"));
       setOrders(orders.filter((order) => order._id !== orderId));
-      setFilteredOrders(filteredOrders.filter((order) => order._id !== orderId));
+      setFilteredOrders(
+        filteredOrders.filter((order) => order._id !== orderId)
+      );
       if (expandedOrder === orderId) setExpandedOrder(null);
     } catch (error) {
       console.error("Error cancelling order:", error);
-      toast.error(error.response?.data?.message || t("profile.orders.cancelError"));
+      toast.error(
+        error.response?.data?.message || t("profile.orders.cancelError")
+      );
     }
   };
 
@@ -115,17 +124,21 @@ const ProfileOrders = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex flex-col items-center justify-center py-12 px-4 text-center">
+        className="flex flex-col items-center justify-center py-12 px-4 text-center"
+      >
         <div className="bg-gray-100 p-6 rounded-full mb-4">
           <FaBoxOpen className="text-gray-400 text-4xl" />
         </div>
         <h3 className="text-xl font-semibold text-gray-800 mb-2">
           {t("profile.orders.noOrders")}
         </h3>
-        <p className="text-gray-500 max-w-md mb-6">{t("profile.orders.noOrdersDesc")}</p>
+        <p className="text-gray-500 max-w-md mb-6">
+          {t("profile.orders.noOrdersDesc")}
+        </p>
         <button
           onClick={() => navigate("/products")}
-          className="px-6 py-3 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg">
+          className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
+        >
           {t("profile.orders.shopNow")}
         </button>
       </motion.div>
@@ -141,25 +154,33 @@ const ProfileOrders = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100">
+            className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100"
+          >
             {/* Order Summary */}
             <div
               className="p-5 cursor-pointer flex justify-between items-center"
-              onClick={() => toggleOrderExpansion(order._id)}>
+              onClick={() => toggleOrderExpansion(order._id)}
+            >
               <div className="flex items-center space-x-4">
                 <div className="text-2xl">{getStatusIcon(order.status)}</div>
                 <div>
                   <h3 className="font-semibold text-gray-900">
-                    {t("profile.orders.order")} #{order._id.slice(-6).toUpperCase()}
+                    {t("profile.orders.order")} #
+                    {order._id.slice(-6).toUpperCase()}
                   </h3>
-                  <p className="text-sm text-gray-500">{formatDate(order.createdAt)}</p>
+                  <p className="text-sm text-gray-500">
+                    {formatDate(order.createdAt)}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
                 <div className="text-right hidden md:block">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                      order.status
+                    )}`}
+                  >
                     {t(`profile.orders.${order.status}`)}
                   </span>
                 </div>
@@ -169,7 +190,11 @@ const ProfileOrders = () => {
                   </span>
                 </div>
                 <div className="text-gray-400">
-                  {expandedOrder === order._id ? <FaChevronUp /> : <FaChevronDown />}
+                  {expandedOrder === order._id ? (
+                    <FaChevronUp />
+                  ) : (
+                    <FaChevronDown />
+                  )}
                 </div>
               </div>
             </div>
@@ -181,7 +206,8 @@ const ProfileOrders = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="border-t border-gray-100">
+                  className="border-t border-gray-100"
+                >
                   <div className="p-5 grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Order Items */}
                     <div className="lg:col-span-2">
@@ -192,7 +218,8 @@ const ProfileOrders = () => {
                         {order.items.map((item, index) => (
                           <div
                             key={index}
-                            className="flex space-x-4 p-3 bg-gray-50 rounded-lg">
+                            className="flex space-x-4 p-3 bg-gray-50 rounded-lg"
+                          >
                             <img
                               src={item.productId.images[0]?.url}
                               alt={item.productId.name}
@@ -205,11 +232,6 @@ const ProfileOrders = () => {
                               <p className="text-sm text-gray-500 mt-1">
                                 {item.quantity} × ${item.price.toFixed(2)}
                               </p>
-                              {item.promotion && (
-                                <span className="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded mt-2">
-                                  {t("profile.orders.promoApplied")}: {item.promotion.name} (-{item.promotion.discount}%)
-                                </span>
-                              )}
                             </div>
                             <div className="text-right">
                               <p className="font-semibold">
@@ -217,8 +239,11 @@ const ProfileOrders = () => {
                               </p>
                               {order.status === "delivered" && (
                                 <button
-                                  onClick={() => handleLeaveReview(item.productId._id)}
-                                  className="mt-2 text-xs text-purple-600 hover:text-purple-800 flex items-center space-x-1">
+                                  onClick={() =>
+                                    handleLeaveReview(item.productId._id)
+                                  }
+                                  className="mt-2 text-xs text-purple-600 hover:text-purple-800 flex items-center space-x-1"
+                                >
                                   <FaStar className="text-yellow-400" />
                                   <span>{t("profile.orders.leaveReview")}</span>
                                 </button>
@@ -236,18 +261,44 @@ const ProfileOrders = () => {
                           {t("profile.orders.summary")}
                         </h4>
                         <div className="space-y-3">
+                          {/* Subtotal */}
                           <div className="flex justify-between">
-                            <span className="text-gray-600">{t("profile.orders.subtotal")}</span>
-                            <span className="font-medium">${order.subtotal?.toFixed(2)}</span>
+                            <span className="text-gray-600">
+                              {t("profile.orders.subtotal")}
+                            </span>
+                            <span className="font-medium">
+                              $
+                              {order.items
+                                ?.reduce(
+                                  (sum, item) =>
+                                    sum + item.price * item.quantity,
+                                  0
+                                )
+                                .toFixed(2) || "0.00"}
+                            </span>
                           </div>
+
+                          {/* Shipping */}
                           <div className="flex justify-between">
-                            <span className="text-gray-600">{t("profile.orders.shipping")}</span>
-                            <span className="font-medium">${order.shipping?.toFixed(2)}</span>
+                            <span className="text-gray-600">
+                              {t("profile.orders.shipping")}
+                            </span>
+                            <span className="font-medium">
+                              ${order.shipping?.toFixed(2) || "0.00"}
+                            </span>
                           </div>
+
+                          {/* Tax */}
                           <div className="flex justify-between">
-                            <span className="text-gray-600">{t("profile.orders.tax")}</span>
-                            <span className="font-medium">${order.tax?.toFixed(2)}</span>
+                            <span className="text-gray-600">
+                              {t("profile.orders.tax")}
+                            </span>
+                            <span className="font-medium">
+                              ${order.tax?.toFixed(2) || "0.00"}
+                            </span>
                           </div>
+
+                          {/* Total */}
                           <div className="border-t border-gray-200 pt-3 mt-2 flex justify-between font-semibold text-gray-900">
                             <span>{t("profile.orders.total")}</span>
                             <span>${order.total?.toFixed(2)}</span>
@@ -262,31 +313,57 @@ const ProfileOrders = () => {
                         </h4>
                         <div className="space-y-2 text-sm">
                           <p className="font-medium text-gray-900">
-                            {order.shippingInfo.firstName} {order.shippingInfo.lastName}
+                            {order.shippingInfo.firstName}{" "}
+                            {order.shippingInfo.lastName}
                           </p>
-                          <p className="text-gray-600">{order.shippingInfo.address.street}</p>
-                          {order.shippingInfo.address.apartment && (
-                            <p className="text-gray-600">{order.shippingInfo.address.apartment}</p>
-                          )}
                           <p className="text-gray-600">
-                            {order.shippingInfo.address.city}, {order.shippingInfo.address.governorate} {order.shippingInfo.address.postalCode}
+                            {order.shippingInfo.address.street}
                           </p>
-                          <p className="text-gray-600 mt-2"><span className="font-medium">Phone:</span> {order.shippingInfo.phone}</p>
-                          <p className="text-gray-600"><span className="font-medium">Email:</span> {order.shippingInfo.email}</p>
+                          <p className="text-gray-600">
+                            {order.shippingInfo.address.city},{" "}
+                            {order.shippingInfo.address.governorate}{" "}
+                            {order.shippingInfo.address.postalCode}
+                          </p>
+                          <p className="text-gray-600 mt-2">
+                            <span className="font-medium">Phone:</span>{" "}
+                            {order.shippingInfo.phone}
+                          </p>
+                          <p className="text-gray-600">
+                            <span className="font-medium">Email:</span>{" "}
+                            {order.shippingInfo.email}
+                          </p>
                         </div>
                       </div>
 
-                      {/* Cancel Order */}
-                      {order.status === "pending" && (
-                        <div className="pt-4">
+                      {/* Order Actions */}
+                      <div className="pt-4">
+                        <div className="flex flex-wrap gap-3">
+                          {/* Track Order Button */}
                           <button
-                            onClick={() => handleCancelOrder(order._id)}
-                            className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors flex items-center space-x-2">
-                            <FaTimesCircle />
-                            <span>{t("profile.orders.cancelOrder")}</span>
+                            onClick={() => handleTrackOrder(order._id)}
+                            className={`px-4 py-2 rounded-lg transition-all flex items-center space-x-2 ${
+                              order.status === "delivered"
+                                ? "bg-gray-100 text-gray-500 cursor-not-allowed"
+                                : "bg-purple-600 text-white hover:bg-purple-700 shadow-md hover:shadow-lg"
+                            }`}
+                            disabled={order.status === "delivered"}
+                          >
+                            <FaTruck />
+                            <span>{t("profile.orders.trackOrder")}</span>
                           </button>
+
+                          {/* Cancel Order Button */}
+                          {order.status === "pending" && (
+                            <button
+                              onClick={() => handleCancelOrder(order._id)}
+                              className="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors flex items-center space-x-2"
+                            >
+                              <FaTimesCircle />
+                              <span>{t("profile.orders.cancelOrder")}</span>
+                            </button>
+                          )}
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>

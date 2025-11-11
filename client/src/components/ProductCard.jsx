@@ -36,7 +36,8 @@ const ProductCard = ({ product }) => {
 
   const price = product?.price?.toFixed(2) || "0.00";
   const stock = product?.stock ?? 0;
-  const status = stock > 0 ? t("productCard.inStock") : t("productCard.outOfStock");
+  const status =
+    stock > 0 ? t("productCard.inStock") : t("productCard.outOfStock");
 
   // Truncate product name
   const truncatedName =
@@ -57,7 +58,9 @@ const ProductCard = ({ product }) => {
   const promotionName = hasActivePromotion
     ? activePromotion.name || t("product.specialOffer")
     : "";
-  const discountRate = hasActivePromotion ? activePromotion.discountRate || 0 : 0;
+  const discountRate = hasActivePromotion
+    ? activePromotion.discountRate || 0
+    : 0;
   const promotionImage = hasActivePromotion ? activePromotion.image?.url : null;
   const promotionEndDate = hasActivePromotion
     ? new Date(activePromotion.endDate).toLocaleDateString(i18n.language, {
@@ -111,7 +114,9 @@ const ProductCard = ({ product }) => {
 
     try {
       if (isWishlisted) {
-        const item = wishlistItems.find((item) => item.productId._id === product._id);
+        const item = wishlistItems.find(
+          (item) => item.productId._id === product._id
+        );
         if (item) {
           await axios.delete(`${WISHLIST_API_URL}/item`, {
             data: { userId: currentUser.id, itemId: item._id },
@@ -127,7 +132,9 @@ const ProductCard = ({ product }) => {
           stock,
         });
         const newItem = {
-          ...response.data.wishlist.items.find((item) => item.productId._id === product._id),
+          ...response.data.wishlist.items.find(
+            (item) => item.productId._id === product._id
+          ),
           productId: product,
         };
         if (newItem) {
@@ -175,17 +182,25 @@ const ProductCard = ({ product }) => {
         price: parseFloat(newPrice),
       });
 
-      const newItem = response.data.cart.items[response.data.cart.items.length - 1];
-      dispatch(addCartItem({
-        ...newItem,
-        productId: { ...product, price: parseFloat(newPrice), stock },
-        price: parseFloat(newPrice),
-        stock,
-      }));
+      // Use the correct path for items in API response
+      const cartData = response.data.data || response.data.cart || {};
+      const newItem = (cartData.items || []).at(-1);
+
+      if (!newItem) throw new Error("Cart item not returned by API");
+
+      dispatch(
+        addCartItem({
+          ...newItem,
+          productId: { ...product, price: parseFloat(newPrice), stock },
+          price: parseFloat(newPrice),
+          stock,
+        })
+      );
+
       toast.success(t("productCard.cart.success"));
     } catch (err) {
       console.error("Add to cart error:", err);
-      toast.error(t("productCard.cart.error"));
+      toast.error(err.response?.data?.message || t("productCard.cart.error"));
     }
   };
 
@@ -208,7 +223,8 @@ const ProductCard = ({ product }) => {
     <div
       className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 relative group overflow-hidden flex flex-col h-full"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}>
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="relative pb-[100%] overflow-hidden">
         <Link to={`/products/${product._id}`} className="absolute inset-0">
           {primaryImage && (
@@ -233,7 +249,9 @@ const ProductCard = ({ product }) => {
           )}
           {!primaryImage && (
             <div className="absolute inset-0 bg-gray-50 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">{t("product.noImage")}</span>
+              <span className="text-gray-400 text-sm">
+                {t("product.noImage")}
+              </span>
             </div>
           )}
         </Link>
@@ -297,7 +315,8 @@ const ProductCard = ({ product }) => {
               isWishlisted
                 ? t("productCard.wishlist.remove")
                 : t("productCard.wishlist.add")
-            }>
+            }
+          >
             {isToggling ? (
               <span className="loading loading-spinner loading-xs"></span>
             ) : isWishlisted ? (
@@ -333,7 +352,9 @@ const ProductCard = ({ product }) => {
           <div className="flex items-baseline gap-1.5">
             <div className="text-base font-bold text-gray-900">${newPrice}</div>
             {hasActivePromotion && (
-              <div className="text-xs text-gray-500 line-through">${oldPrice}</div>
+              <div className="text-xs text-gray-500 line-through">
+                ${oldPrice}
+              </div>
             )}
           </div>
           <button
@@ -344,7 +365,8 @@ const ProductCard = ({ product }) => {
                 : "bg-gray-200 text-gray-500 cursor-not-allowed"
             }`}
             disabled={stock <= 0}
-            aria-label={t("productCard.cart.add")}>
+            aria-label={t("productCard.cart.add")}
+          >
             <FaShoppingCart className="w-3 h-3" />
             <span className="hidden sm:inline">
               {stock > 0
