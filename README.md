@@ -103,6 +103,9 @@ STRIPE_SECRET_KEY=<your_stripe_secret_key>
 ## Featured Products
 ![alt text](image-13.png)
 
+## Similar Products
+![alt text](image-29.png)
+
 ---
 
 # User Dashbord
