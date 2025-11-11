@@ -162,3 +162,11 @@ Create Promotion
 
 Manage Orders
 ![alt text](image.png)
+
+## Third-party Services (API)
+
+Stripe: Payment processing and checkout API
+![alt text](image-2.png)
+
+Cloudinary: Media storage (Cloud)
+![alt text](image-28.png)
