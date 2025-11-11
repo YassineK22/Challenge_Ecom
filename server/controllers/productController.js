@@ -1,6 +1,7 @@
 const Product = require("../models/Product");
 const { uploadToCloudinary, cloudinary } = require("../utils/uploadsImages");
 const mongoose = require("mongoose");
+const Category = require("../models/Category");
 
 // Helper function to process images
 const processImages = async (files) => {
@@ -49,7 +50,7 @@ exports.getAllProducts = async (req, res) => {
       .populate("tags", "name")
       .populate("createdBy")
       .populate({
-        path: "activePromotion", 
+        path: "activePromotion",
         select: "name discountRate startDate endDate image isActive",
       })
       .lean();
@@ -78,7 +79,7 @@ exports.getProductById = async (req, res) => {
       .populate("createdBy")
       .populate("tags", "name")
       .populate({
-        path: "activePromotion", // or 'promotion' if your schema uses that
+        path: "activePromotion",
         select: "name discountRate startDate endDate image isActive",
       })
       .lean();
@@ -109,7 +110,7 @@ exports.getProductByReference = async (req, res) => {
         select: "name",
       })
       .populate({
-        path: "activePromotion", 
+        path: "activePromotion",
         select: "name discountRate startDate endDate image isActive",
       })
       .populate("reviews", "rating comment createdAt userName")
@@ -119,7 +120,6 @@ exports.getProductByReference = async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    // Ensure categoryDetails.subcategory is present
     if (!product.categoryDetails?.subcategory) {
       product.categoryDetails.subcategory = { group: "", item: "" };
     }
@@ -208,9 +208,9 @@ exports.updateProduct = async (req, res) => {
     const productData = {
       name: req.body.name,
       description: req.body.description,
-      price: req.body.price,     // ✅ add this
-      stock: req.body.stock,     // ✅ add this
-      warranty: req.body.warranty, // ✅ add this
+      price: req.body.price,
+      stock: req.body.stock,
+      warranty: req.body.warranty,
     };
 
     if (req.body.categoryDetails) {
@@ -329,13 +329,26 @@ exports.deleteProductImage = async (req, res) => {
 };
 
 // Search products by reference or name
+// Search products by reference, name, filters, etc.
 exports.searchProducts = async (req, res) => {
   try {
-    const { q = "", category = "", page = 1, limit = 20 } = req.query;
+    const {
+      q = "",
+      category = "",
+      minPrice = "",
+      maxPrice = "",
+      rating = "",
+      inStock = false,
+      page = 1,
+      limit = 20,
+    } = req.query;
 
     const trimmedQuery = q.trim();
 
+    // Base query
     let query = {};
+
+    // 🔍 Text search (name, description, reference)
     if (trimmedQuery) {
       query.$or = [
         { name: { $regex: trimmedQuery, $options: "i" } },
@@ -344,19 +357,42 @@ exports.searchProducts = async (req, res) => {
       ];
     }
 
+    // 🏷️ Category filter
     if (category) {
-      query["categoryDetails.category"] = mongoose.Types.ObjectId.isValid(category)
-        ? new mongoose.Types.ObjectId(category)
-        : { $exists: false };
+      query["categoryDetails.category"] =
+        mongoose.Types.ObjectId.isValid(category)
+          ? new mongoose.Types.ObjectId(category)
+          : { $exists: false };
     }
 
+    // 💰 Price range filter
+    if (minPrice || maxPrice) {
+      query.price = {};
+      if (minPrice) query.price.$gte = Number(minPrice);
+      if (maxPrice) query.price.$lte = Number(maxPrice);
+    }
+
+    // ⭐ Rating filter
+    if (rating) {
+      query.averageRating = { $gte: Number(rating) }; // assumes your Product model has an averageRating field
+    }
+
+    // 📦 Stock filter
+    if (inStock === "true" || inStock === true) {
+      query.stock = { $gt: 0 };
+    }
+
+    // 🔢 Pagination
+    const skip = (Number(page) - 1) * Number(limit);
+
+    // 📦 Fetch products
     const products = await Product.find(query)
       .populate({
         path: "categoryDetails.category",
         select: "name",
       })
       .populate("createdBy")
-      .skip((Number(page) - 1) * Number(limit))
+      .skip(skip)
       .limit(Number(limit))
       .lean();
 
@@ -370,7 +406,10 @@ exports.searchProducts = async (req, res) => {
       totalPages: Math.ceil(totalProducts / Number(limit)),
     });
   } catch (error) {
-    res.status(500).json({ message: "Error performing search", error: error.message });
+    res.status(500).json({
+      message: "Error performing search",
+      error: error.message,
+    });
   }
 };
 
@@ -458,50 +497,35 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-// Get products filtered by category/subcategory
+
 exports.getProductsByCategory = async (req, res) => {
   try {
     const { categoryDetails, group, item } = req.query;
     const query = {};
 
+    // Convert category name to ObjectId(s)
     if (categoryDetails) {
-      const category = await Category.findOne({ name: categoryDetails });
-      if (!category) {
-        return res.status(404).json({ message: `Category '${categoryDetails}' not found` });
-      }
-      query["categoryDetails.category"] = category._id;
+      const categories = await Category.find({ name: categoryDetails });
+      const categoryIds = categories.map(c => c._id);
+      query["categoryDetails.category"] = { $in: categoryIds };
     }
 
     if (group) query["categoryDetails.subcategory.group"] = group;
     if (item) query["categoryDetails.subcategory.item"] = item;
 
     const products = await Product.find(query)
-      .populate({
-        path: "categoryDetails.category",
-        select: "name",
-      })
-      .populate({
-        path: "activePromotion",
-        select: "name discountRate startDate endDate isActive image",
-      })
+      .populate({ path: "categoryDetails.category", select: "name" })
+      .populate({ path: "activePromotion", select: "name discountRate startDate endDate isActive image" })
       .lean();
 
-    const transformedProducts = products.map((product) => {
-      if (product.promotions) {
-        product.promotions = product.promotions.map((promo) => ({
-          ...promo,
-          oldPrice: promo.oldPrice || null,
-          newPrice: promo.newPrice || null,
-        }));
-      }
-      return transformProductData(product);
-    });
-
+    const transformedProducts = products.map(transformProductData);
     res.json(transformedProducts);
   } catch (err) {
+    console.error("Error in getProductsByCategory:", err);
     res.status(500).json({ message: err.message });
   }
 };
+
 
 // Get related products
 exports.getRelatedProducts = async (req, res) => {

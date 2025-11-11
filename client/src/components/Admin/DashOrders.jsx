@@ -360,7 +360,7 @@ const DashOrders = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                        <div className="shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
                           {order.buyer.name.charAt(0).toUpperCase()}
                         </div>
                         <div className="ml-4">

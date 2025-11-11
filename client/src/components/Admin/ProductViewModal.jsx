@@ -179,7 +179,7 @@ const ProductViewModal = ({ product, onClose, onUpdate }) => {
                   />
                   {hasActivePromotion && (
                     <div className="absolute top-6 left-6 z-10 transform -rotate-6 hover:rotate-0 transition-transform duration-300">
-                      <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl shadow-2xl flex items-stretch overflow-hidden min-w-[180px]">
+                      <div className="bg-linear-to-r from-red-500 to-orange-500 text-white rounded-xl shadow-2xl flex items-stretch overflow-hidden min-w-[180px]">
                         {promotionImage ? (
                           <img
                             src={promotionImage}

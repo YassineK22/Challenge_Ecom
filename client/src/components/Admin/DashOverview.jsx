@@ -126,7 +126,7 @@ const DashOverview = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white rounded-xl p-6 mb-6 shadow-lg">
+      <div className="bg-linear-to-r from-gray-800 to-gray-700 text-white rounded-xl p-6 mb-6 shadow-lg">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h2 className="text-2xl font-bold mb-2">Admin Dashboard</h2>

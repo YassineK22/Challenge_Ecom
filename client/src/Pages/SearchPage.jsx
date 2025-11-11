@@ -96,9 +96,12 @@ const SearchPage = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get("http://localhost:8000/api/products/search", {
-          params: searchParams,
-        });
+        const res = await axios.get(
+          "http://localhost:8000/api/products/search",
+          {
+            params: searchParams,
+          }
+        );
         setProducts(res.data.products);
         setTotalPages(res.data.totalPages);
         setTotalProducts(res.data.total);
@@ -242,6 +245,115 @@ const SearchPage = () => {
                     </option>
                   ))}
                 </select>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-4">
+                  {t("search.priceRange")}
+                </h3>
+                <div className="px-2">
+                  <div className="relative h-1 bg-gray-200 rounded-full mb-6">
+                    <div
+                      className="absolute h-1 bg-indigo-500 rounded-full"
+                      style={{
+                        left: `${(searchParams.minPrice / 3000) * 100}%`,
+                        right: `${100 - (searchParams.maxPrice / 3000) * 100}%`,
+                      }}
+                    />
+                    <input
+                      type="range"
+                      min="0"
+                      max="3000"
+                      step="10"
+                      value={searchParams.minPrice || 0}
+                      onChange={(e) =>
+                        setSearchParams((prev) => ({
+                          ...prev,
+                          minPrice: e.target.value,
+                          page: 1,
+                        }))
+                      }
+                      className="absolute w-full h-1 opacity-0 cursor-pointer -top-1"
+                    />
+                    <input
+                      type="range"
+                      min="0"
+                      max="3000"
+                      step="10"
+                      value={searchParams.maxPrice || 3000}
+                      onChange={(e) =>
+                        setSearchParams((prev) => ({
+                          ...prev,
+                          maxPrice: e.target.value,
+                          page: 1,
+                        }))
+                      }
+                      className="absolute w-full h-1 opacity-0 cursor-pointer -top-1"
+                    />
+                  </div>
+                  <div className="flex justify-between">
+                    <input
+                      type="number"
+                      name="minPrice"
+                      value={searchParams.minPrice || ""}
+                      onChange={handleInputChange}
+                      placeholder="0"
+                      className="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                    <input
+                      type="number"
+                      name="maxPrice"
+                      value={searchParams.maxPrice || ""}
+                      onChange={handleInputChange}
+                      placeholder="3000"
+                      className="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">
+                  {t("search.rating")}
+                </h3>
+                <div className="flex flex-col space-y-2">
+                  {[5, 4, 3, 2, 1].map((rating) => (
+                    <button
+                      key={rating}
+                      type="button"
+                      onClick={() =>
+                        setSearchParams((prev) => ({
+                          ...prev,
+                          rating:
+                            prev.rating === rating.toString()
+                              ? ""
+                              : rating.toString(),
+                        }))
+                      }
+                      className={`flex items-center group ${
+                        searchParams.rating === rating.toString()
+                          ? "text-amber-500"
+                          : "text-gray-400 hover:text-amber-400"
+                      }`}
+                    >
+                      <div className="flex mr-2">
+                        {[...Array(5)].map((_, i) => (
+                          <FaStar
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < rating
+                                ? "fill-current"
+                                : "fill-none stroke-current stroke-2"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <span className="text-xs font-medium group-hover:text-gray-700">
+                        {t(`search.rating${rating}`)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Stock */}

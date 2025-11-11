@@ -152,7 +152,7 @@ const ProductDetailsTab = ({
 
             <div className="space-y-4 pl-14">
               {hasActivePromotion && (
-                <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                <div className="bg-linear-to-r from-red-50 to-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
                   <div className="flex items-start">
                     <div className="bg-orange-100 p-2 rounded-lg mr-3">
                       <FaFireAlt className="text-orange-500 w-5 h-5" />

@@ -5,7 +5,6 @@ const signIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
-    // Replace with your logic to find and validate user
     const user = await User.findOne({ email });
     if (!user) {
       return next(e.errorHandler(400, "Invalid email or password"));
@@ -24,7 +23,7 @@ const signIn = async (req, res, next) => {
 
     // Set the token as a cookie
     res.cookie("access_token", token, {
-      httpOnly: true, // Ensures cookie is not accessible via JavaScript
+      httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Set to true for HTTPS
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });

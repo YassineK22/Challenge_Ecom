@@ -23,7 +23,6 @@ import {
 } from "@stripe/react-stripe-js";
 
 // Initialize Stripe with publishable key
-
 const stripePromise = loadStripe(
   "pk_test_51RZBxJPdDjk1qTamqr1Y49CC12av7gh3Ods4CND9aN8sNHz7eXtoxLrMnSsxaLQsF1fgzPP5NwxAFQtlwdfcI2em00mQmHpnK7"
 );

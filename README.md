@@ -74,106 +74,91 @@ STRIPE_SECRET_KEY=<your_stripe_secret_key>
 
 ---
 
-## 🛠 API Endpoints
+## Visitor Dashbord
 
-### **Auth**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST   | `/signup` | Register a new user |
-| POST   | `/signin` | Login user |
-| POST   | `/google` | Login with Google |
-| POST   | `/set-password` | Set or reset user password |
+Sign In
+![alt text](image-14.png)
 
----
+Create an Account
+![alt text](image-15.png)
 
-### **User**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| PUT    | `/user/:id` | Update user details |
-| GET    | `/user/:id` | Get user by ID |
-| GET    | `/users` | Get all users |
-| POST   | `/signout` | Sign out user |
-| GET    | `/dashboard/stats` | Get user dashboard statistics |
+Home
+![alt text](image-7.png)
 
----
+Language Translate dropdown
+![alt text](image-8.png)
 
-### **Wishlist**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST   | `/wishlist/add` | Add an item to wishlist |
-| GET    | `/wishlist` | Get wishlist by user ID |
-| DELETE | `/wishlist/item` | Delete a specific item from wishlist |
-| DELETE | `/wishlist` | Delete entire wishlist |
+Search By Category
+![alt text](image-9.png)
+
+Search by product
+![alt text](image-11.png)
+
+Recent Search
+![alt text](image-10.png)
+
+Flash Sale (Promo Prducts)
+![alt text](image-12.png)
+
+Featured Products
+![alt text](image-13.png)
 
 ---
 
-### **Cart**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST   | `/cart/add` | Add an item to cart |
-| GET    | `/cart` | Get cart by user ID |
-| DELETE | `/cart/item` | Delete a specific item from cart |
-| PUT    | `/cart/item/quantity` | Update quantity of an item in cart |
-| DELETE | `/cart` | Delete entire cart |
+## User Dashbord
+
+Wishlist Page
+![alt text](image-16.png)
+
+Cart DropDown
+![alt text](image-17.png)
+
+Personal Information
+![alt text](image-18.png)
+
+Edit Personal Information
+![alt text](image-19.png)
+
+WishlistProfil
+![alt text](image-20.png)
+
+Manage Orders
+![alt text](image-21.png)
+
+ChekoutPage
+![alt text](image-22.png)
+
+ChekoutSteps
+![alt text](image-23.png)
+
+![alt text](image-24.png)
+
+![alt text](image-25.png)
+
+![alt text](image-26.png)
+
+Order Tracking
+![alt text](image-27.png)
+
 
 ---
 
-### **Products**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET    | `/products` | Get all products |
-| GET    | `/products/search` | Search products |
-| GET    | `/products/suggestions` | Get product suggestions |
-| GET    | `/products/reference/:reference` | Get product by reference |
-| GET    | `/products/by-category` | Get products by category |
-| GET    | `/products/:productId/related` | Get related products |
-| GET    | `/products/:id` | Get product by ID |
-| POST   | `/products` | Create a new product |
-| PUT    | `/products/:id` | Update a product |
-| DELETE | `/products/:id` | Delete a product |
-| POST   | `/products/:id/images` | Add images to product |
-| DELETE | `/products/:id/images/:publicId` | Delete product image |
+## 🛠 Admin Dashbord
 
----
+Main Dashbord
+![alt text](image-5.png)
 
-### **Categories**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET    | `/api/categories` | Get all categories |
-| POST   | `/api/categories` | Create a new category |
-| PUT    | `/api/categories/:id` | Update category |
-| DELETE | `/api/categories/:id` | Delete category |
-| PATCH  | `/api/categories/:id/subcategories` | Add subcategories |
+Users Dashbord
+![alt text](image-4.png)
 
----
+Products Dashbord
+![alt text](image-3.png)
 
-### **Reviews**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST   | `/reviews` | Add a review |
-| GET    | `/reviews/:productId` | Get reviews for a product |
-| PUT    | `/reviews/:reviewId` | Update a review |
-| DELETE | `/reviews/:reviewId/:userId` | Delete a review |
+Add Product
+![alt text](image-6.png)
 
----
+Create Promotion
+![alt text](image-1.png)
 
-### **Promotions**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST   | `/promotions` | Create a promotion |
-| GET    | `/promotions/id/:promotionId` | Get promotion by ID |
-
----
-
-### **Payments**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST   | `/payments/create-payment-intent` | Create Stripe payment intent |
-
----
-
-### **Admin**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| DELETE | `/delete/:userId` | Delete a user |
-| PATCH  | `/status/:userId` | Toggle user status |
+Manage Orders
+![alt text](image.png)

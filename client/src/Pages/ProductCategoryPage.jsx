@@ -36,10 +36,7 @@ const ProductCategoryPage = () => {
         if (item) url += `&item=${encodeURIComponent(item)}`;
 
         const response = await axios.get(url);
-        const data = Array.isArray(response.data.products)
-          ? response.data.products
-          : response.data;
-        setProducts(data);
+        setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
         setError(
@@ -53,7 +50,9 @@ const ProductCategoryPage = () => {
     const fetchWishlist = async () => {
       if (currentUser) {
         try {
-          const response = await axios.get(`${API_URL}?userId=${currentUser.id}`);
+          const response = await axios.get(
+            `${API_URL}?userId=${currentUser.id}`
+          );
           dispatch({
             type: "wishlist/setWishlist",
             payload: response.data.items.map((item) => ({
@@ -95,9 +94,10 @@ const ProductCategoryPage = () => {
 
         dispatch({
           type: "wishlist/addItem",
-          payload: response.data.wishlist.items[
-            response.data.wishlist.items.length - 1
-          ],
+          payload:
+            response.data.wishlist.items[
+              response.data.wishlist.items.length - 1
+            ],
         });
         toast.success(t("productCategory.errors.wishlist.addSuccess"));
       } else {
@@ -158,7 +158,9 @@ const ProductCategoryPage = () => {
           <div className="mb-6 flex items-center justify-between">
             <p className="text-gray-600 text-sm">
               {t("productCategory.showing")}{" "}
-              <span className="font-medium text-gray-900">{products.length}</span>{" "}
+              <span className="font-medium text-gray-900">
+                {products.length}
+              </span>{" "}
               {t("productCategory.products")}
             </p>
           </div>

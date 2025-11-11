@@ -22,6 +22,7 @@ const ProductSchema = new mongoose.Schema(
     categoryDetails: categoryReferenceSchema,
     price: { type: Number, required: true, min: 0 },
     stock: { type: Number, required: true, min: 0 },
+    averageRating: { type: Number, default: 0 },
     warranty: {
       type: String,
       enum: ["", "1 year", "2 years", "3 years", "lifetime"],

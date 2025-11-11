@@ -193,14 +193,14 @@ const DashPromotion = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-6">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-4 md:p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 text-white p-4 rounded-full shadow-lg mb-4 transform hover:scale-105 transition-transform">
+          <div className="inline-flex items-center justify-center bg-linear-to-r from-purple-600 to-blue-500 text-white p-4 rounded-full shadow-lg mb-4 transform hover:scale-105 transition-transform">
             <FiGift className="text-3xl" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text bg-linear-to-r from-purple-600 to-blue-500 text-transparent">
             Promotion Creator
           </h1>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-lg">
@@ -237,7 +237,7 @@ const DashPromotion = () => {
 
         {/* Main Card */}
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transition-all hover:shadow-2xl">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-500 p-6 text-white flex justify-between items-center">
+          <div className="bg-linear-to-r from-purple-600 to-blue-500 p-6 text-white flex justify-between items-center">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <FiGift /> Create New Promotion
             </h2>
@@ -266,7 +266,7 @@ const DashPromotion = () => {
                       imagePreview
                         ? "border-transparent"
                         : "border-dashed border-gray-300 hover:border-purple-300"
-                    } rounded-xl overflow-hidden transition-all bg-gradient-to-br from-gray-50 to-white hover:shadow-sm`}
+                    } rounded-xl overflow-hidden transition-all bg-linear-to-br from-gray-50 to-white hover:shadow-sm`}
                   >
                     {imagePreview ? (
                       <div className="relative group">
@@ -457,7 +457,7 @@ const DashPromotion = () => {
                   </div>
 
                   <div className="bg-white rounded-lg overflow-hidden">
-                    <div className="grid grid-cols-12 gap-4 p-3 bg-gradient-to-r from-purple-50 to-blue-50 border-b text-xs font-medium text-purple-800 uppercase tracking-wider">
+                    <div className="grid grid-cols-12 gap-4 p-3 bg-linear-to-r from-purple-50 to-blue-50 border-b text-xs font-medium text-purple-800 uppercase tracking-wider">
                       <div className="col-span-1 flex items-center">
                         <input
                           type="checkbox"
@@ -564,7 +564,7 @@ const DashPromotion = () => {
                   selectedProducts.length === 0 ||
                   submitting
                     ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600"
+                    : "bg-linear-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600"
                 } flex items-center gap-2`}
               >
                 <FiGift />

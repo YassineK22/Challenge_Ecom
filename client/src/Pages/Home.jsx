@@ -74,7 +74,7 @@ export const Home = () => {
         "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=878&q=80",
       bgColor: "bg-gradient-to-br from-purple-600 to-indigo-800",
       icon: <RiGamepadLine className="text-4xl text-white" />,
-      category: "Gaming",
+      category: "Computers & IT",
     },
     {
       id: 2,

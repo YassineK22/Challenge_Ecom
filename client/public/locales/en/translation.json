@@ -1,5 +1,4 @@
 {
-
     "header": {
         "searchPlaceholder": "Search products...",
         "wishlist": "Wishlist",
@@ -42,7 +41,7 @@
     },
     "squarePromotions": {
       "gaming": {
-        "title": "Gaming Special",
+        "title": "Computers & IT",
         "subtitle": "High-performance gear",
         "buttonText": "View Deals"
       },

@@ -49,7 +49,7 @@ const CartPage = () => {
             };
           });
 
-          dispatch(setCart(validItems)); // <-- add this
+          dispatch(setCart(validItems)); 
           setError(null);
         } catch (err) {
           if (err.response?.status >= 500) {

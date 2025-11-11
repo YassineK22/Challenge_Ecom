@@ -60,7 +60,7 @@ const ReusePromotionModal = ({ show, onClose, onSelect, currentUser }) => {
         {/* Modal container with slide-in animation */}
         <div className="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
           {/* Modal header with gradient */}
-          <div className="bg-gradient-to-r from-purple-600 to-blue-500 px-6 py-5">
+          <div className="bg-linear-to-r from-purple-600 to-blue-500 px-6 py-5">
             <div className="flex justify-between items-center">
               <div>
                 <h3 className="text-2xl font-bold text-white">
@@ -84,7 +84,7 @@ const ReusePromotionModal = ({ show, onClose, onSelect, currentUser }) => {
             {/* Error message */}
             {error && (
               <div className="mb-4 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-md flex items-start">
-                <FiX className="flex-shrink-0 h-5 w-5 mt-0.5 mr-2" />
+                <FiX className="shrink-0 h-5 w-5 mt-0.5 mr-2" />
                 <div>
                   <p className="font-medium">Error loading promotions</p>
                   <p className="text-sm">{error}</p>
@@ -130,13 +130,13 @@ const ReusePromotionModal = ({ show, onClose, onSelect, currentUser }) => {
                   >
                     <div className="flex flex-col md:flex-row gap-5">
                       {/* Promotion image with hover effect */}
-                      <div className="flex-shrink-0 w-full md:w-40 h-32 rounded-lg overflow-hidden border border-gray-200 relative group">
+                      <div className="shrink-0 w-full md:w-40 h-32 rounded-lg overflow-hidden border border-gray-200 relative group">
                         <img
                           src={promotion.image.url}
                           alt={promotion.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
                           <span className="text-white text-sm font-medium">
                             {promotion.applicableProducts.length} {promotion.applicableProducts.length === 1 ? 'product' : 'products'}
                           </span>
@@ -224,7 +224,7 @@ const ReusePromotionModal = ({ show, onClose, onSelect, currentUser }) => {
               disabled={!selectedPromotion}
               className={`px-6 py-3 rounded-xl font-medium text-white transition-colors ${
                 selectedPromotion
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 shadow-md'
+                  ? 'bg-linear-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 shadow-md'
                   : 'bg-gray-400 cursor-not-allowed'
               }`}
             >
