@@ -1,4 +1,4 @@
-# 🛒 E-Commerce Front-End Challenge
+# 🛒 E-Commerce Front-End Challenge (E-Challenge)
 
 Modern e-commerce app built with **React** and **Node.js/Express**.
 
