@@ -115,22 +115,23 @@ const getOrderById = async (req, res) => {
   }
 };
 
-// 🧍 Get all orders for a user
+// Get all orders for a specific user
 const getUserOrders = async (req, res) => {
   try {
     const { userId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(userId))
-      return res.status(400).json({ message: "Invalid userId" });
 
     const orders = await Order.find({ userId })
       .populate("items.productId", "name images price")
       .sort({ createdAt: -1 });
 
-    if (!orders.length) return res.status(404).json({ message: "No orders found" });
+    if (!orders || orders.length === 0) {
+      return res.status(404).json({ message: "No orders found for this user" });
+    }
 
-    res.status(200).json({ message: "Orders retrieved successfully", orders });
+    res.status(200).json({ orders });
   } catch (error) {
-    res.status(500).json({ message: "Failed to retrieve orders", error: error.message });
+    console.error("Error fetching user orders:", error);
+    res.status(500).json({ message: "Error fetching user orders", error: error.message });
   }
 };
 

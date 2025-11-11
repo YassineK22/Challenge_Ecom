@@ -36,7 +36,7 @@ module.exports = {
   updateUser: async (req, res, next) => {
     try {
       const userId = req.params.id;
-      const { name, email, phoneNumber, address} =
+      const { name, email, phoneNumber, address } =
         req.body;
 
       // Find user by ID
@@ -98,27 +98,23 @@ module.exports = {
 
   getDashboardStats: async (req, res, next) => {
     try {
-      // Count all users
       const totalUsers = await User.countDocuments({});
-
-      // Count new users this week
       const oneWeekAgo = new Date();
       oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
       const newUsers = await User.countDocuments({
         createdAt: { $gte: oneWeekAgo },
       });
 
-      // Mock revenue data
       const revenue = 12500;
 
       res.status(200).json({
         totalUsers,
         revenue,
         newUsers,
-        completedDeliveries,
       });
     } catch (error) {
       next(error);
     }
   },
+
 };

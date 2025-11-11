@@ -8,10 +8,7 @@ import {
   FaFireAlt,
 } from "react-icons/fa";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
-import {
-  RiLeafLine,
-  RiExchangeLine,
-} from "react-icons/ri";
+import { RiLeafLine, RiExchangeLine } from "react-icons/ri";
 import { BsShieldCheck, BsBoxSeam, BsCheckCircleFill } from "react-icons/bs";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -80,8 +77,10 @@ const ProductDetailsPage = () => {
           const avgRating =
             reviews.length > 0
               ? (
-                  reviews.reduce((sum, review) => sum + (review.rating || 0), 0) /
-                  reviews.length
+                  reviews.reduce(
+                    (sum, review) => sum + (review.rating || 0),
+                    0
+                  ) / reviews.length
                 ).toFixed(1)
               : 0;
           setAverageRating(parseFloat(avgRating));
@@ -135,11 +134,14 @@ const ProductDetailsPage = () => {
         variantId: selectedVariant?._id,
       });
 
-      const newItem = response.data.cart.items.at(-1);
+      // ✅ Correct access to items
+      const cartData = response.data.data; // <--- your API returns the cart in data
+      const newItem = cartData.items.at(-1);
+
       dispatch(
         addCartItem({
           ...newItem,
-          productId: product,
+          productId: product, // attach product details for frontend
           price: product.price,
           stock: product.stock,
           variantId: selectedVariant?._id,
@@ -148,8 +150,6 @@ const ProductDetailsPage = () => {
 
       toast.success(t("product.addedToCart"), {
         position: "bottom-right",
-        className: "!bg-green-50 !text-green-700",
-        icon: <BsCheckCircleFill className="text-green-500" />,
       });
     } catch (err) {
       toast.error(err.response?.data?.message || t("product.cartError"));
@@ -226,7 +226,10 @@ const ProductDetailsPage = () => {
 
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <div className="md:flex">
-            <ProductImageGallery images={product.images || []} productName={product.name} />
+            <ProductImageGallery
+              images={product.images || []}
+              productName={product.name}
+            />
 
             <div className="md:w-1/2 p-6">
               <div className="flex justify-between items-start mb-4">
@@ -246,22 +249,31 @@ const ProductDetailsPage = () => {
                       : "text-gray-400 hover:text-red-500 hover:bg-gray-100"
                   }`}
                 >
-                  {isWishlisted ? <IoMdHeart size={24} /> : <IoMdHeartEmpty size={24} />}
+                  {isWishlisted ? (
+                    <IoMdHeart size={24} />
+                  ) : (
+                    <IoMdHeartEmpty size={24} />
+                  )}
                 </button>
               </div>
 
               <div className="flex items-center mb-5">
                 <div className="flex mr-2">{renderStars(averageRating)}</div>
                 <span className="text-sm text-gray-500">
-                  {averageRating.toFixed(1)} ({reviewCount} {t("product.reviews")}) •{" "}
+                  {averageRating.toFixed(1)} ({reviewCount}{" "}
+                  {t("product.reviews")}) •{" "}
                   <span className="text-green-600">
-                    {product.stock > 0 ? t("product.inStock") : t("product.outOfStock")}
+                    {product.stock > 0
+                      ? t("product.inStock")
+                      : t("product.outOfStock")}
                   </span>
                 </span>
               </div>
 
               <div className="mb-4">
-                <span className="text-3xl font-bold">${product.price.toFixed(2)}</span>
+                <span className="text-3xl font-bold">
+                  ${product.price.toFixed(2)}
+                </span>
                 {product.discount && (
                   <span className="ml-2 text-red-500 text-sm">
                     -{product.discount}% {t("product.off")}
@@ -286,7 +298,9 @@ const ProductDetailsPage = () => {
               )}
 
               <div className="flex items-center mb-4">
-                <span className="mr-3 font-medium">{t("product.quantity")}:</span>
+                <span className="mr-3 font-medium">
+                  {t("product.quantity")}:
+                </span>
                 <div className="flex items-center border border-gray-300 rounded-lg">
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -296,7 +310,9 @@ const ProductDetailsPage = () => {
                   </button>
                   <span className="px-4 border-x">{quantity}</span>
                   <button
-                    onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
+                    onClick={() =>
+                      setQuantity((q) => Math.min(product.stock, q + 1))
+                    }
                     className="px-3 py-2"
                   >
                     +
@@ -310,7 +326,9 @@ const ProductDetailsPage = () => {
                 className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium flex items-center justify-center"
               >
                 <FaShoppingCart className="mr-3" />
-                {product.stock > 0 ? t("product.addToCart") : t("product.soldOut")}
+                {product.stock > 0
+                  ? t("product.addToCart")
+                  : t("product.soldOut")}
               </button>
 
               <div className="flex justify-center gap-4 text-xs text-gray-500 border-t pt-4 mt-6">
@@ -357,21 +375,29 @@ const ProductDetailsPage = () => {
               {activeTab === "specifications" && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">{t("product.general")}</h4>
+                    <h4 className="font-bold text-gray-900 mb-3">
+                      {t("product.general")}
+                    </h4>
                     <div className="space-y-3">
                       <div className="flex justify-between py-2 border-b">
                         <span>{t("product.brand")}</span>
-                        <span className="font-medium">{product.brand || "—"}</span>
+                        <span className="font-medium">
+                          {product.brand || "—"}
+                        </span>
                       </div>
                       <div className="flex justify-between py-2 border-b">
                         <span>{t("product.model")}</span>
-                        <span className="font-medium">{product.reference || "—"}</span>
+                        <span className="font-medium">
+                          {product.reference || "—"}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
               )}
-              {activeTab === "reviews" && <ProductReviews productId={product._id} />}
+              {activeTab === "reviews" && (
+                <ProductReviews productId={product._id} />
+              )}
             </div>
           </div>
 

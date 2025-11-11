@@ -1,69 +1,152 @@
 {
-
-    "header": {
-        "searchPlaceholder": "Rechercher des produits...",
-        "wishlist": "Liste de souhaits",
-        "yourCart": "Votre Panier",
-        "item": "article",
-        "items": "articles",
-        "product": "Produit",
-        "qty": "Qté",
-        "moreItems": "articles supplémentaires",
-        "subtotal": "Sous-total", 
-        "viewCart": "Voir le panier",
-        "emptyCart": "Votre panier est vide",
-        "startShopping": "Commencer à magasiner",
-        "myProfile": "Mon Profil",
-        "logout": "Déconnexion",
-        "signIn": "Connexion",
-        "joinUs": "Rejoignez-nous",
-        "becomeSeller": "Devenir Partenaire",
-        "deliveryTeam": "Rejoignez L'Équipe de Livraison",
-        "signoutSuccess": "Déconnexion réussie",
-        "signoutError": "Échec de la déconnexion"
+  "header": {
+    "searchPlaceholder": "Rechercher des produits...",
+    "wishlist": "Liste de souhaits",
+    "yourCart": "Votre Panier",
+    "item": "article",
+    "items": "articles",
+    "product": "Produit",
+    "qty": "Qté",
+    "moreItems": "plus d'articles",
+    "subtotal": "Sous-total",
+    "viewCart": "Voir le panier & Commander",
+    "emptyCart": "Votre panier est vide",
+    "startShopping": "Commencer vos achats",
+    "myProfile": "Mon Profil",
+    "logout": "Se déconnecter",
+    "signIn": "Se connecter",
+    "joinUs": "Rejoignez-nous",
+    "signoutSuccess": "Déconnexion réussie",
+    "signoutError": "Échec de la déconnexion"
+  },
+  "home": {
+    "carousel": {
+      "smartphones": {
+        "title": "Smartphones de nouvelle génération",
+        "subtitle": "Découvrez la performance ultra-rapide 5G",
+        "buttonText": "Explorer",
+        "badgeText": "NOUVEAUTÉS"
       },
-      "categories": {
-        "title": "Toutes les catégories",
-        "loading": "Chargement...",
-        "fetchError": "Échec du chargement des catégories",
-        "errorPrefix": "Erreur lors du chargement des catégories :",
-        "Laptops": "Ordinateurs portables",
-        "Gaming": "Jeux vidéo",
-        "Business": "Professionnel",
-        "Ultrabooks": "Ultrabooks",
-        "MacBooks": "MacBooks",
-        "Desktops": "Ordinateurs de bureau",
-        "Gaming PCs": "PC Gaming",
-        "All-in-One": "Tout-en-un",
-        "Workstations": "Stations de travail",
-        "Mini PCs": "Mini PC",
-        "Accessories": "Accessoires",
-        "groups": {
-          "Keyboards": "Claviers",
-          "Mice": "Souris",
-          "External Drives": "Disques externes",
-          "Monitors": "Écrans",
-          "Routers": "Routeurs",
-          "Modems": "Modems",
-          "Switches": "Switchs",
-          "Adapters": "Adaptateurs",
-          "Storage": "Stockage"
-        },
-        "items": {
-          "Mechanical": "Mécanique",
-          "Wireless": "Sans fil",
-          "Gaming": "Gaming",
-          "SSD": "SSD",
-          "HDD": "Disque dur",
-          "4K": "4K",
-          "Wi-Fi 6": "Wi-Fi 6",
-          "Ethernet": "Ethernet"
-        }
-      },"signIn": {
+      "laptops": {
+        "title": "Ordinateurs portables premium",
+        "subtitle": "Design ultra-fin et performances puissantes",
+        "buttonText": "Acheter maintenant",
+        "badgeText": "STOCK LIMITE"
+      },
+      "audio": {
+        "title": "Audio immersif",
+        "subtitle": "Son de qualité studio pour audiophiles",
+        "buttonText": "Parcourir"
+      }
+    },
+    "squarePromotions": {
+      "gaming": {
+        "title": "Offre spéciale Gaming",
+        "subtitle": "Équipements haute performance",
+        "buttonText": "Voir les offres"
+      },
+      "audio": {
+        "title": "Semaine Audio",
+        "subtitle": "Systèmes audio premium",
+        "buttonText": "Parcourir"
+      },
+      "mobile": {
+        "title": "Folie Mobile",
+        "subtitle": "Derniers smartphones",
+        "buttonText": "Parcourir"
+      }
+    },
+    "footer": {
+      "companyName": "E-Challenge",
+      "description": "Votre boutique unique pour tous les derniers produits électroniques et gadgets.",
+      "sections": {
+        "shop": "Boutique",
+        "customerService": "Service client",
+        "aboutUs": "À propos"
+      },
+      "shopLinks": {
+        "laptops": "Ordinateurs portables",
+        "smartphones": "Smartphones",
+        "tablets": "Tablettes",
+        "accessories": "Accessoires",
+        "gaming": "Gaming"
+      },
+      "customerServiceLinks": {
+        "contactUs": "Contactez-nous",
+        "faqs": "FAQs",
+        "shippingPolicy": "Politique de livraison",
+        "returnsRefunds": "Retours & Remboursements",
+        "trackOrder": "Suivi de commande"
+      },
+      "aboutUsLinks": {
+        "ourStory": "Notre histoire",
+        "careers": "Carrières",
+        "privacyPolicy": "Politique de confidentialité",
+        "termsOfService": "Conditions d'utilisation",
+        "blog": "Blog"
+      },
+      "copyright": "© 2025 E-Challenge. Tous droits réservés."
+    }
+  },
+  "featuredProducts": {
+    "flashSale": {
+      "title": "Vente Flash",
+      "subtitle": "Offres limitées à ne pas manquer !",
+      "empty": "Aucun produit en vente flash disponible"
+    },
+    "featured": {
+      "title": "Produits en vedette",
+      "subtitle": "Découvrez nos meilleurs choix spécialement pour vous",
+      "empty": "Aucun produit en vedette disponible"
+    },
+    "error": {
+      "load": "Échec du chargement des produits en vedette",
+      "wishlist": "Échec du chargement de la liste de souhaits"
+    }
+  },
+  "categories": {
+    "title": "Toutes les catégories",
+    "loading": "Chargement...",
+    "fetchError": "Échec de récupération des catégories",
+    "errorPrefix": "Erreur lors de la récupération des catégories :",
+    "Laptops": "Ordinateurs portables",
+    "Gaming": "Gaming",
+    "Business": "Business",
+    "Ultrabooks": "Ultrabooks",
+    "MacBooks": "MacBooks",
+    "Desktops": "Ordinateurs de bureau",
+    "Gaming PCs": "PC Gaming",
+    "All-in-One": "Tout-en-un",
+    "Workstations": "Stations de travail",
+    "Mini PCs": "Mini PC",
+    "Accessories": "Accessoires",
+    "groups": {
+      "Keyboards": "Claviers",
+      "Mice": "Souris",
+      "External Drives": "Disques externes",
+      "Monitors": "Moniteurs",
+      "Routers": "Routeurs",
+      "Modems": "Modems",
+      "Switches": "Switches",
+      "Adapters": "Adaptateurs",
+      "Storage": "Stockage"
+    },
+    "items": {
+      "Mechanical": "Mécanique",
+      "Wireless": "Sans fil",
+      "Gaming": "Gaming",
+      "SSD": "SSD",
+      "HDD": "HDD",
+      "4K": "4K",
+      "Wi-Fi 6": "Wi-Fi 6",
+      "Ethernet": "Ethernet"
+    }
+  },
+  "signIn": {
     "title": "Bienvenue",
-    "subtitle": "Entrez votre email et mot de passe pour vous connecter.",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Entrez votre email",
+    "subtitle": "Entrez votre e-mail et mot de passe pour vous connecter.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
     "passwordLabel": "Mot de passe",
     "passwordPlaceholder": "Entrez votre mot de passe",
     "showPassword": "Afficher le mot de passe",
@@ -75,16 +158,15 @@
     "newUserPrompt": "Nouveau sur E-Challenge ?",
     "createAccount": "Créer un compte",
     "success": "Connexion réussie !",
-    "error": "Quelque chose s'est mal passé !"
+    "error": "Une erreur est survenue !"
   },
-
- "signUp": {
+  "signUp": {
     "title": "Créer un compte",
-    "subtitle": "Entrez vos détails pour vous inscrire.",
+    "subtitle": "Entrez vos informations pour vous inscrire.",
     "nameLabel": "Nom",
     "namePlaceholder": "Entrez votre nom",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Entrez votre email",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
     "passwordLabel": "Mot de passe",
     "passwordPlaceholder": "Entrez votre mot de passe",
     "confirmPasswordLabel": "Confirmer le mot de passe",
@@ -98,18 +180,16 @@
     "existingAccountPrompt": "Vous avez déjà un compte ?",
     "signInLink": "Se connecter",
     "success": "Inscription réussie !",
-
     "errors": {
       "passwordMismatch": "Les mots de passe ne correspondent pas !",
-      "invalidPhone": "Veuillez entrer un numéro tunisien valide de 8 chiffres",
-      "generic": "Quelque chose s'est mal passé !"
-    } 
+      "invalidPhone": "Veuillez entrer un numéro tunisien valide à 8 chiffres",
+      "generic": "Une erreur est survenue !"
+    }
   },
-
-"product": {
+  "product": {
     "loading": "Chargement...",
     "fetchError": "Échec du chargement du produit",
-    "reviewError": "Erreur lors du chargement des avis :",
+    "reviewError": "Erreur lors de la récupération des avis :",
     "notFound": "Produit non trouvé",
     "goBack": "Retour",
     "home": "Accueil",
@@ -125,20 +205,19 @@
     "review": "avis",
     "reviews": "avis",
     "selectOption": "Sélectionner une option :",
-    "save": "Économisez",
+    "save": "Enregistrer",
     "off": "DE RÉDUCTION",
-    "discount": "réduction",
-    "ends": "Se termine le",
+    "discount": "remise",
+    "ends": "Se termine",
     "specialOffer": "Offre spéciale",
     "ecoFriendly": "Emballage écologique",
-    "keyFeatures": "Caractéristiques clés",
-    "unknownSeller": "Vendeur inconnu",
+    "keyFeatures": "Caractéristiques principales",
     "positive": "Positif",
     "freeShipping": "Livraison gratuite",
     "warranty": "Garantie 1 an",
     "quantity": "Quantité",
     "addToCart": "Ajouter au panier",
-    "soldOut": "En rupture de stock",
+    "soldOut": "Épuisé",
     "buyNow": "Acheter maintenant",
     "securePayment": "Paiement sécurisé",
     "freeReturns": "Retours gratuits",
@@ -154,68 +233,8 @@
     "model": "Modèle",
     "technical": "Technique"
   },
-  "seller": {
-    "title": "Devenir Vendeur",
-    "subtitle": "Commencez votre parcours en tant que vendeur en remplissant le formulaire ci-dessous.",
-    "email": "Email",
-    "emailPlaceholder": "Entrez votre email",
-    "shopName": "Nom du magasin",
-    "shopNamePlaceholder": "Entrez le nom de votre magasin",
-    "address": "Adresse du siège",
-    "addressPlaceholder": "Entrez l'adresse de votre siège",
-    "fiscalId": "Carte d'identification fiscale",
-    "tradeRegister": "Registre du commerce",
-    "submit": "Soumettre",
-    "submitting": "Envoi en cours...",
-    "or": "OU",
-    "alreadySeller": "Déjà vendeur ?",
-    "signIn": "Se connecter",
-    "checkStatus": "Voulez-vous vérifier l'état de votre demande ?",
-    "clickHere": "Cliquez ici",
-    "step1": "Étape 1 : Remplissez votre demande d'inscription",
-    "step1Desc": "Complétez le formulaire initial pour commencer le processus.",
-    "step2": "Étape 2 : Complétez le formulaire d'inscription",
-    "step2Desc": "Vous recevrez un email avec des instructions supplémentaires et les documents requis.",
-    "step3": "Étape 3 : Examen de la demande",
-    "step3Desc": "Notre équipe examinera attentivement votre demande et vos documents.",
-    "step4": "Étape 4 : Commencez à vendre",
-    "step4Desc": "Une fois approuvé, vous pouvez commencer à faire vos premières ventes sur notre plateforme 🥳.",
-    "fileTypeError": "Veuillez télécharger un fichier PDF.",
-    "fileSizeError": "La taille du fichier doit être inférieure à 5 Mo.",
-    "successMessage": "Votre demande a été soumise avec succès ! Veuillez attendre que notre équipe examine votre demande. Nous vous contacterons par email.",
-    "errorMessage": "Quelque chose s'est mal passé !"
-  },
-  "delivery": {
-    "title": "Rejoignez Notre Équipe de Livraison",
-    "email": "Email",
-    "emailPlaceholder": "votre@email.com",
-    "vehicleType": "Type de véhicule",
-    "vehicleTypePlaceholder": "Voiture, Moto, etc.",
-    "vehicleNumber": "Numéro de véhicule",
-    "vehicleNumberPlaceholder": "ex. TN 1234",
-    "deliveryArea": "Zone de livraison",
-    "deliveryAreaPlaceholder": "Votre zone de travail",
-    "contactNumber": "Numéro de contact",
-    "contactNumberPlaceholder": "20 123 456",
-    "phoneHint": "Entrez votre numéro tunisien à 8 chiffres",
-    "phoneError": "Veuillez entrer un numéro tunisien valide à 8 chiffres",
-    "cv": "Votre CV (PDF)",
-    "submit": "Soumettre la demande",
-    "submitting": "Envoi en cours...",
-    "checkStatus": "Voulez-vous vérifier l'état de votre demande ?",
-    "clickHere": "Cliquez ici",
-    "fileTypeError": "Veuillez télécharger un fichier PDF.",
-    "fileSizeError": "La taille du fichier doit être inférieure à 5 Mo.",
-    "successMessage": "Demande soumise avec succès ! Nous examinerons votre demande bientôt.",
-    "errorMessage": "Quelque chose s'est mal passé !",
-    "benefitsTitle": "Livrez Avec Nous",
-    "benefitsSubtitle": "Gagnez un revenu compétitif avec des horaires flexibles tout en livrant le bonheur aux clients à travers la Tunisie.",
-    "benefit1": "Horaires flexibles",
-    "benefit2": "Revenus compétitifs",
-    "benefit3": "Paiements hebdomadaires"
-  },
   "cart": {
-    "title": "Votre Panier",
+    "title": "Votre panier",
     "items": "articles",
     "item": "article",
     "clearCart": "Vider le panier",
@@ -225,53 +244,53 @@
       "button": "Parcourir les produits"
     },
     "orderSummary": {
-      "title": "Récapitulatif de commande",
+      "title": "Résumé de la commande",
       "subtotal": "Sous-total",
       "shipping": "Livraison",
       "freeShipping": "GRATUITE",
       "tax": "Taxe (19%)",
       "total": "Total",
-      "checkout": "Passer au Paiement",
+      "checkout": "Passer à la caisse",
       "continueShopping": "Continuer vos achats"
     },
     "product": {
       "soldBy": "Vendu par",
       "inStock": "En stock",
-      "outOfStock": "En rupture",
-      "itemTotal": "Total de l'article",
+      "outOfStock": "Rupture de stock",
+      "itemTotal": "Total article",
       "quantity": "Quantité",
       "remove": "Supprimer"
     },
     "authRequired": {
-      "title": "Votre panier d'achat",
-      "description": "Connectez-vous pour voir vos articles enregistrés et passer commande",
+      "title": "Votre panier",
+      "description": "Connectez-vous pour voir vos articles sauvegardés et passer à la caisse",
       "signIn": "Se connecter",
       "createAccount": "Créer un compte"
     },
     "errors": {
-      "removeOutOfStock": "Veuillez supprimer les articles en rupture de stock pour passer commande",
+      "removeOutOfStock": "Veuillez retirer les articles en rupture de stock pour passer à la caisse",
       "quantityMin": "La quantité ne peut pas être inférieure à 1",
       "quantityMax": "La quantité ne peut pas dépasser le stock disponible ({stock})",
       "clearConfirm": "Êtes-vous sûr de vouloir vider votre panier ?",
       "loadError": "Échec du chargement de votre panier",
       "removeError": "Échec de la suppression de l'article",
       "quantityError": "Échec de la mise à jour de la quantité",
-      "clearError": "Échec de la suppression du panier"
+      "clearError": "Échec du vidage du panier"
     }
   },
   "wishlist": {
-    "title": "Votre Liste de Souhaits",
+    "title": "Votre liste de souhaits",
     "items": "articles",
     "item": "article",
-    "clearAll": "effacer Tout",
+    "clearAll": "Tout supprimer",
     "emptyWishlist": {
       "title": "Votre liste de souhaits est vide",
-      "description": "Ajoutez des articles à votre liste de souhaits pour les voir ici",
-      "button": "Commencer à magasiner"
+      "description": "Ajoutez des articles à votre liste pour les voir ici",
+      "button": "Commencer vos achats"
     },
     "authRequired": {
-      "title": "Votre Liste de Souhaits Vous Attend",
-      "description": "Connectez-vous pour enregistrer les articles que vous aimez et y accéder à tout moment",
+      "title": "Votre liste de souhaits vous attend",
+      "description": "Connectez-vous pour sauvegarder vos articles préférés et y accéder à tout moment",
       "signIn": "Se connecter",
       "createAccount": "Créer un compte"
     },
@@ -288,7 +307,7 @@
   },
   "productCard": {
     "inStock": "En stock",
-    "outOfStock": "En rupture",
+    "outOfStock": "Rupture de stock",
     "soldBy": "Vendu par",
     "reviews": {
       "single": "avis",
@@ -307,285 +326,92 @@
       "soldOut": "Épuisé",
       "success": "Article ajouté au panier",
       "error": "Échec de l'ajout au panier",
-      "loginRequired": "Vous devez vous connecter pour ajouter des articles au panier",
+      "loginRequired": "Vous devez vous connecter pour ajouter des articles à votre panier",
       "outOfStock": "Cet article est en rupture de stock"
     },
     "promotion": {
-      "ends": "Se termine le",
+      "ends": "Se termine",
       "discount": "{discountRate}% DE RÉDUCTION",
       "tooltip": {
-        "discount": "{discountRate}% de réduction"
+        "discount": "{discountRate}% de remise"
       }
     }
-  },
-
- "productCategory": {
-    "title": "Tous les produits",
-    "loading": "Chargement des produits...",
-    "showing": "Affichage de",
-    "products": "produits",
-    "noProducts": {
-      "title": "Aucun produit trouvé",
-      "description": "Nous n'avons trouvé aucun produit dans cette catégorie. Essayez de parcourir d'autres catégories ou revenez plus tard."
-    },
-    "errors": {
-      "loadError": "Impossible de charger les produits. Veuillez réessayer plus tard.",
-      "wishlist": {
-        "loginRequired": "Vous devez vous connecter pour gérer votre liste de souhaits.",
-        "addSuccess": "Ajouté à la liste de souhaits",
-        "removeSuccess": "Retiré de la liste de souhaits",
-        "error": "Échec de la mise à jour de la liste de souhaits",
-        "loadError": "Échec du chargement de la liste de souhaits"
-      }
-    }
-  },
-
-  "applicationStatus": {
-    "title": "Vérifier l'état de la demande",
-    "emailPlaceholder": "Entrez votre email",
-    "checkButton": "Vérifier l'état",
-    "checkingButton": "Vérification en cours...",
-    "error": {
-      "emptyEmail": "Veuillez entrer votre email",
-      "fetchError": "Erreur lors de la vérification de l'état de la demande. Veuillez réessayer."
-    },
-    "status": {
-      "approved": {
-        "title": "Votre demande a été approuvée !",
-        "details": "Veuillez vérifier votre email pour plus de détails.",
-        "redirect": "Vous serez redirigé vers la page de connexion sous peu..."
-      },
-      "pending": "Votre demande est toujours en cours d'examen.",
-      "rejected": {
-        "title": "Votre demande a été rejetée.",
-        "details": "Vérifiez votre email pour plus d'informations."
-      },
-      "label": "Statut : {status}"
-    },
-    "becomeSeller": {
-      "text": "Vous souhaitez devenir vendeur ?",
-      "link": "Cliquez ici pour postuler"
-    }
-  },
-  "adminDashboard": {
-    "title": "Portail Admin",
-    "welcome": "Bienvenue ",
-    "searchPlaceholder": "Rechercher utilisateurs, vendeurs...",
-    "role": "Administrateur",
-    "sidebar": {
-      "dashboard": "Tableau de bord",
-      "users": "Gestion des utilisateurs",
-      "sellers": "Vendeurs",
-      "deliveries": "Livraisons",
-      "analytics": "Analytique",
-      "settings": "Paramètres",
-      "signOut": "Déconnexion"
-    },
-    "notifications": {
-      "new": "Nouvelles notifications"
-    }
-  },
-  "sellerDashboard": {
-    "title": "Espace Vendeur",
-    "welcome": "Bienvenue",
-    "searchPlaceholder": "Rechercher produits, commandes...",
-    "role": "Vendeur Premium",
-    "sidebar": {
-      "dashboard": "Tableau de bord",
-      "products": "Catalogue produits",
-      "addInventory": "Ajouter stock",
-      "promotions": "Promotions",
-      "orders": "Commandes",
-      "customers": "Clients",
-      "sales": "Ventes",
-      "analytics": "Analytique",
-      "settings": "Paramètres",
-      "signOut": "Déconnexion"
-    },
-    "notifications": {
-      "new": "Nouvelles notifications"
-    }
-  },
-
-  "deliveryDashboard": {
-    "title": "Centre de Livraison",
-    "welcome": "Bienvenue",
-    "searchPlaceholder": "Rechercher des livraisons...",
-    "role": "Livreur",
-    "sidebar": {
-      "dashboard": "Tableau de bord",
-      "deliveries": "Livraisons en attentes",
-      "assigned": "Mes Livraison",
-      "history": "Historique",
-      "settings": "Paramètres",
-      "signOut": "Déconnexion"
-    },
-    "notifications": {
-      "new": "Nouvelles notifications"
-    }
-  },
-"sellerProductsPage": {
-    "loading": "Chargement...",
-    "error": "Erreur lors du chargement des produits",
-    "noProducts": "Aucun produit trouvé pour ce vendeur",
-    "shopHeader": {
-      "defaultShopName": "Boutique du vendeur",
-      "productsAvailable": {
-        "one": "produit disponible",
-        "other": "produits disponibles"
-      }
-    },
-    "emptyState": "Aucun produit disponible de ce vendeur",
-    "wishlistMessages": {
-      "loginRequired": "Vous devez vous connecter pour gérer votre liste de souhaits",
-      "added": "Ajouté à la liste de souhaits",
-      "removed": "Retiré de la liste de souhaits",
-      "updateError": "Échec de la mise à jour de la liste de souhaits"
-    }
-  },
-  "setPassword": {
-    "title": "Définir votre mot de passe",
-    "passwordPlaceholder": "Entrez un nouveau mot de passe",
-    "confirmPlaceholder": "Confirmez le mot de passe",
-    "submitButton": "Définir le mot de passe",
-    "loadingButton": "Enregistrement du mot de passe...",
-    "errors": {
-      "mismatch": "Les mots de passe ne correspondent pas.",
-      "generic": "Erreur lors de la définition du mot de passe. Veuillez réessayer."
-    },
-    "success": "Mot de passe défini avec succès! Redirection vers la connexion...",
-    "validation": {
-      "minLength": "Le mot de passe doit contenir au moins 8 caractères",
-      "requirements": "Doit contenir majuscule, minuscule, chiffre et caractère spécial"
-    }
-  },
-  "forgotPassword": {
-    "title": "Mot de passe oublié",
-    "subtitle": "Entrez votre email pour réinitialiser votre mot de passe",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Entrez votre email",
-    "submitButton": "Envoyer le lien de réinitialisation",
-    "backButton": "Retour à la connexion",
-    "success": "Email de réinitialisation envoyé. Vérifiez votre boîte de réception.",
-    "error": "Quelque chose s'est mal passé!"
-  },
-  "productReviews": {
-    "title": "Avis des clients",
-    "noReviews": {
-      "title": "Pas encore d'avis",
-      "message": {
-        "loggedIn": "Soyez le premier à partager votre avis !",
-        "loggedOut": "Connectez-vous pour écrire le premier avis."
-      }
-    },
-    "summary": {
-      "average": "Basé sur {count} avi{countSuffix}",
-      "breakdown": "Répartition des notes"
-    },
-    "review": {
-      "anonymous": "Anonyme",
-      "edit": "Modifier l'avis",
-      "delete": "Supprimer l'avis",
-      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cet avis ?",
-      "alreadyReviewed": "Vous avez déjà évalué ce produit",
-      "editInstructions": "Vous pouvez modifier ou supprimer votre avis ci-dessus."
-    },
-    "form": {
-      "title": "Écrire un avis",
-      "ratingLabel": "Votre note",
-      "commentLabel": "Votre avis",
-      "commentPlaceholder": "Partagez votre expérience détaillée avec ce produit...",
-      "submit": "Soumettre l'avis",
-      "update": "Mettre à jour l'avis",
-      "cancel": "Annuler",
-      "loginRequired": "Vous devez vous connecter pour {action} un avis.",
-      "actions": {
-        "submit": "soumettre",
-        "update": "mettre à jour",
-        "delete": "supprimer"
-      }
-    },
-    "success": {
-      "submit": "Avis soumis avec succès !",
-      "update": "Avis mis à jour avec succès !",
-      "delete": "Avis supprimé avec succès !"
-    },
-    "error": {
-      "load": "Échec du chargement des avis",
-      "submit": "Échec de la soumission de l'avis",
-      "update": "Échec de la mise à jour de l'avis",
-      "delete": "Échec de la suppression de l'avis",
-      "tryAgain": "Réessayer"
-    },
-    "writeReview": "Écrire un avis"
   },
   "checkout": {
-    "title": "Commande",
-    "subtitle": "Finalisez votre achat",
+    "title": "Passer à la caisse",
+    "subtitle": "Complétez votre achat",
     "steps": {
-      "step1": "Informations",
+      "step1": "Informations personnelles",
       "step2": "Livraison",
-      "step3": "Méthode",
+      "step3": "Méthode de livraison",
       "step4": "Paiement"
     },
     "personalInfo": {
-      "title": "Informations Personnelles",
+      "title": "Informations personnelles",
       "firstName": "Prénom",
       "lastName": "Nom",
-      "phone": "Téléphone",
-      "email": "Adresse Email"
+      "phone": "Numéro de téléphone",
+      "email": "Adresse e-mail"
     },
     "shippingAddress": {
-      "title": "Adresse de Livraison",
+      "title": "Adresse de livraison",
       "street": "Adresse",
-      "apartment": "Appartement/Étage",
+      "apartment": "Appartement/Unité",
       "city": "Ville",
-      "postalCode": "Code Postal",
+      "postalCode": "Code postal",
       "governorate": "Gouvernorat",
-      "selectGovernorate": "Sélectionnez un gouvernorat",
-      "deliveryInstructions": "Instructions de Livraison"
+      "selectGovernorate": "Sélectionnez le gouvernorat",
+      "deliveryInstructions": "Instructions de livraison"
     },
     "deliveryMethod": {
-      "title": "Méthode de Livraison",
-      "standard": "Livraison Standard",
+      "title": "Méthode de livraison",
+      "standard": "Livraison standard",
       "standardDescription": "3-5 jours ouvrables",
-      "express": "Livraison Express",
+      "express": "Livraison express",
       "expressDescription": "1-2 jours ouvrables",
-      "pickup": "Retrait en Magasin",
-      "pickupDescription": "Retirez votre commande en magasin"
+      "pickup": "Retrait en magasin",
+      "pickupDescription": "Récupérez votre commande en magasin"
     },
     "paymentMethod": {
-      "title": "Méthode de Paiement",
-      "cod": "Paiement à la Livraison",
-      "codDescription": "Payez lorsque vous recevez votre commande",
-      "creditCard": "Carte de Crédit",
-      "creditCardDescription": "Payez en toute sécurité avec votre carte",
-        "comingSoon": "Bientôt Disponible",
-  "creditCardDisabledMessage": "Nous travaillons sur l'ajout de paiements par carte de crédit sécurisés. Veuillez vérifier plus tard!"
+      "title": "Méthode de paiement",
+      "cod": "Paiement à la livraison",
+      "codDescription": "Payez lors de la réception de la commande",
+      "stripe": "Carte bancaire",
+      "stripeDescription": "Payez en toute sécurité avec votre carte",
+      "testCards": "Numéros de cartes de test",
+      "cardBrands": {
+        "visa": "Visa",
+        "mastercard": "Mastercard",
+        "amex": "American Express",
+        "discover": "Discover",
+        "diners": "Diners Club",
+        "jcb": "JCB",
+        "unionpay": "UnionPay"
+      }
     },
     "orderSummary": {
-      "title": "Résumé de la Commande",
+      "title": "Résumé de la commande",
       "subtotal": "Sous-total",
       "shipping": "Livraison",
-      "free": "Gratuit",
+      "free": "Gratuite",
       "tax": "Taxe",
       "total": "Total",
       "quantity": "Quantité"
     },
     "termsAgreement": {
       "part1": "J'accepte les",
-      "terms": "Conditions d'Utilisation",
+      "terms": "Conditions d'utilisation",
       "and": "et la",
-      "privacyPolicy": "Politique de Confidentialité"
+      "privacyPolicy": "Politique de confidentialité"
     },
     "buttons": {
       "back": "Retour",
-      "backToCart": "Retour au Panier",
+      "backToCart": "Retour au panier",
       "continue": "Continuer",
-      "placeOrder": "Passer la Commande"
+      "placeOrder": "Passer la commande"
     },
     "errors": {
-      "agreeTerms": "Vous devez accepter les conditions générales",
+      "agreeTerms": "Vous devez accepter les termes et conditions",
       "submitError": "Erreur lors de la soumission de votre commande. Veuillez réessayer."
     },
     "success": {
@@ -593,215 +419,181 @@
     }
   },
   "orderTracking": {
-  "title": "Suivi de Commande",
-  "placedOn": "Passée le",
-  "orderStatus": "État de la Commande",
-  "orderDetails": "Détails de la Commande",
-  "orderSummary": "Résumé de la Commande",
-  "shippingInfo": "Informations de Livraison",
-  "paymentInfo": "Informations de Paiement",
-  "deliveryInstructions": "Instructions de Livraison",
-  "paymentMethod": "Méthode de Paiement",
-  "deliveryMethod": "Méthode de Livraison",
-  "orderTotal": "Total de la Commande",
-  "paymentStatus": "État du Paiement",
-  "quantity": "Quantité",
-  "subtotal": "Sous-total",
-  "shipping": "Livraison",
-  "tax": "Taxe",
-  "total": "Total",
-  "free": "Gratuit",
-  "status": {
-    "pending": "Commande Passée",
-    "pendingDescription": "Nous avons reçu votre commande",
-    "processing": "En Cours",
-    "processingDescription": "Votre commande est en préparation",
-    "shipped": "Expédiée",
-    "shippedDescription": "Votre commande est en route",
-    "delivered": "Livrée",
-    "deliveredDescription": "Votre commande est arrivée"
+    "title": "Suivi de commande",
+    "placedOn": "Commandé le",
+    "orderStatus": "Statut de la commande",
+    "orderDetails": "Détails de la commande",
+    "orderSummary": "Résumé de la commande",
+    "shippingInfo": "Informations de livraison",
+    "paymentInfo": "Informations de paiement",
+    "deliveryInstructions": "Instructions de livraison",
+    "paymentMethod": "Méthode de paiement",
+    "deliveryMethod": "Méthode de livraison",
+    "orderTotal": "Total de la commande",
+    "paymentStatus": "Statut du paiement",
+    "quantity": "Quantité",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "tax": "Taxe",
+    "total": "Total",
+    "free": "Gratuit",
+    "status": {
+      "pending": "Commande passée",
+      "pendingDescription": "Nous avons reçu votre commande",
+      "processing": "En cours de traitement",
+      "processingDescription": "Votre commande est en préparation",
+      "shipped": "Expédiée",
+      "shippedDescription": "Votre commande est en route",
+      "delivered": "Livrée",
+      "deliveredDescription": "Votre commande est arrivée"
+    },
+    "paymentMethods": {
+      "cod": "Paiement à la livraison",
+      "credit": "Carte bancaire",
+      "paypal": "PayPal",
+      "stripe": "Stripe"
+    },
+    "deliveryMethods": {
+      "standard": "Livraison standard",
+      "express": "Livraison express",
+      "pickup": "Retrait en magasin"
+    },
+    "paymentStatuses": {
+      "pending": "En attente",
+      "paid": "Payé",
+      "failed": "Échec"
+    },
+    "buttons": {
+      "continueShopping": "Continuer vos achats",
+      "leaveReview": "Laisser un avis",
+      "backToHome": "Retour à l'accueil",
+      "refreshStatus": "Actualiser le statut"
+    },
+    "errors": {
+      "fetchError": "Échec du chargement des détails de la commande",
+      "orderNotFound": "Commande non trouvée"
+    },
+    "yourPurchases": "Vos achats",
+    "items": "articles",
+    "suborderStatus": "Statut du colis",
+    "suborderSummary": "Résumé du colis",
+    "viewProduct": "Voir le produit",
+    "leaveReview": "Laisser un avis",
+    "orderProgress": "Progression de la commande"
   },
-  "paymentMethods": {
-    "cod": "Paiement à la Livraison",
-    "credit": "Carte de Crédit"
-  },
-  "deliveryMethods": {
-    "standard": "Livraison Standard",
-    "express": "Livraison Express",
-    "pickup": "Retrait en Magasin"
-  },
-  "paymentStatuses": {
-    "pending": "En Attente",
-    "paid": "Payé",
-    "failed": "Échoué"
-  },
-  "buttons": {
-    "continueShopping": "Continuer les Achats",
-    "leaveReview": "Laisser un Avis",
-    "backToHome": "Retour à l'Accueil",
-    "refreshStatus": "Actualiser l'état"
-  },
-  "errors": {
-    "fetchError": "Échec du chargement des détails de la commande",
-    "orderNotFound": "Commande non trouvée"
-  }
-},
-
   "profile": {
-    "myOrders": "Mes Commandes",
-    "trackOrder": "Suivre la Commande Récente",
+    "myOrders": "Mes commandes",
+    "trackOrder": "Suivre une commande récente",
     "requestsMessages": "Demandes & Messages",
     "payments": "Paiements",
-    "wishlist": "Liste de Souhaits",
-    "personalInfo": "Informations Personnelles",
-    "accountSettings": "Paramètres du Compte",
-    "logout": "Déconnexion",
+    "cancel": "Annuler",
+    "saveChanges": "Enregistrer les modifications",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "personalInfo": "Informations personnelles",
+    "accountSettings": "Paramètres du compte",
+    "name": "Nom",
+    "address": "Adresse",
+    "email": "E-mail",
+    "phone": "Numéro de téléphone",
+    "logout": "Se déconnecter",
     "orders": {
-      "cancelSuccess" : "Commande annulée",
-      "fetchError": "Échec de la récupération des commandes",
-      "noOrders": "Aucune Commande Trouvée",
-      "noOrdersDesc": "Vous n'avez pas encore passé de commande",
-      "shopNow": "Acheter Maintenant",
+      "cancelSuccess": "Commande annulée",
+      "fetchError": "Échec du chargement des commandes",
+      "noOrders": "Aucune commande trouvée",
+      "noOrdersDesc": "Vous n'avez encore passé aucune commande",
+      "shopNow": "Achetez maintenant",
       "order": "Commande",
-      "delivered": "Livré",
-      "pending": "En Attente",
-      "shipped": "Expédié",
-      "cancelled": "Annulé",
-      "processing": "En Traitement",
+      "delivered": "Livrée",
+      "pending": "En attente",
+      "shipped": "Expédiée",
+      "cancelled": "Annulée",
+      "processing": "En cours",
       "items": "Articles",
-      "promoApplied": "Promotion Appliquée",
-      "summary": "Résumé de la Commande",
+      "promoApplied": "Promotion appliquée",
+      "summary": "Résumé de la commande",
       "subtotal": "Sous-total",
       "shipping": "Livraison",
       "tax": "Taxe",
       "total": "Total",
-      "shippingInfo": "Informations de Livraison",
-      "trackOrder": "Suivre la Commande",
-      "viewInvoice": "Voir la Facture",
-      "cancelOrder": "Annuler la Commande",
-      "leaveReview": "Laisser un Avis"
-    },
-    "messages": {
-      "serviceUnavailable": "Service de Messagerie Indisponible",
-      "serviceUnavailableDesc": "Notre système de messagerie est en maintenance",
-      "underMaintenance": "En Maintenance",
-      "underMaintenanceDesc": "Nous améliorons notre service de messagerie pour mieux vous servir",
-      "emailUs": "Envoyez-nous un Email",
-      "emailUsDesc": "Pour toute question ou problème, veuillez contacter notre équipe d'assistance",
-      "callUs": "Appelez-nous",
-      "callUsDesc": "Notre équipe de service client est disponible pour vous aider",
-      "deliveryInfo": "Informations de Livraison",
-      "deliveryInfoDesc": "Notre équipe de livraison vous contactera pour confirmer votre emplacement exact",
-      "locationVerification": "L'appel de vérification de l'emplacement viendra du +1 (234) 567-890",
-      "supportTeam": "Notre Équipe de Support",
-      "supportTeamDesc": "Disponible 24/7 pour résoudre tout problème que vous pourriez avoir"
-    }
-  }
-,
-  "home": {
-    "carousel": {
-      "smartphones": {
-        "title": "Smartphones de nouvelle génération",
-        "subtitle": "Découvrez des performances 5G ultra-rapides",
-        "buttonText": "Explorer",
-        "badgeText": "NOUVELLES ARRIVÉES"
-      },
-      "laptops": {
-        "title": "Ordinateurs portables premium",
-        "subtitle": "Designs ultra-fins avec des performances puissantes",
-        "buttonText": "Acheter maintenant",
-        "badgeText": "STOCK LIMITÉ"
-      },
-      "audio": {
-        "title": "Audio immersif",
-        "subtitle": "Qualité sonore de studio pour les audiophiles",
-        "buttonText": "Parcourir",
-        "badgeText": "MEILLEURES VENTES"
-      }
-    },
-    "squarePromotions": {
-      "gaming": {
-        "title": "Spécial gaming",
-        "subtitle": "Équipements haute performance",
-        "buttonText": "Voir les offres"
-      },
-      "audio": {
-        "title": "Semaine de l'audio",
-        "subtitle": "Systèmes audio premium",
-        "buttonText": "Parcourir"
-      },
-      "mobile": {
-        "title": "Folie mobile",
-        "subtitle": "Derniers smartphones",
-        "buttonText": "Parcourir"
-      }
-    },
-    "footer": {
-      "companyName": "E-Challenge",
-      "description": "Votre guichet unique pour les derniers appareils électroniques et gadgets.",
-      "sections": {
-        "shop": "Boutique",
-        "customerService": "Service client",
-        "aboutUs": "À propos de nous"
-      },
-      "shopLinks": {
-        "laptops": "Ordinateurs portables",
-        "smartphones": "Smartphones",
-        "tablets": "Tablettes",
-        "accessories": "Accessoires",
-        "gaming": "Jeux"
-      },
-      "customerServiceLinks": {
-        "contactUs": "Nous contacter",
-        "faqs": "FAQ",
-        "shippingPolicy": "Politique d'expédition",
-        "returnsRefunds": "Retours et remboursements",
-        "trackOrder": "Suivre la commande"
-      },
-      "aboutUsLinks": {
-        "ourStory": "Notre histoire",
-        "careers": "Carrières",
-        "privacyPolicy": "Politique de confidentialité",
-        "termsOfService": "Conditions de service",
-        "blog": "Blog"
-      },
-      "copyright": "© 2025 E-Challenge. Tous droits réservés."
+      "shippingInfo": "Informations de livraison",
+      "trackOrder": "Suivre la commande",
+      "viewInvoice": "Voir la facture",
+      "cancelOrder": "Annuler la commande",
+      "leaveReview": "Laisser un avis"
     }
   },
-    "featuredProducts": {
-    "flashSale": {
-      "title": "Vente flash",
-      "subtitle": "Offres à durée limitée à ne pas manquer !",
-      "empty": "Aucun produit en vente flash disponible"
-    },
-    "featured": {
-      "title": "Produits en vedette",
-      "subtitle": "Découvrez nos meilleurs choix sélectionnés pour vous",
-      "empty": "Aucun produit en vedette disponible"
-    },
-    "error": {
-      "load": "Échec du chargement des produits en vedette",
-      "wishlist": "Échec du chargement de la liste de souhaits"
-    }
+  "settings": {
+    "title": "Paramètres du compte",
+    "subtitle": "Personnalisez votre expérience",
+    "general": "Général",
+    "appearance": "Apparence",
+    "notifications": "Notifications",
+    "security": "Sécurité",
+    "data": "Données & Confidentialité",
+    "language": "Langue",
+    "darkMode": "Mode sombre",
+    "darkModeOn": "Thème sombre activé",
+    "darkModeOff": "Thème clair activé",
+    "themeColor": "Couleur du thème",
+    "fontSize": "Taille de police",
+    "comingSoon": "Bientôt disponible",
+    "featureInDevelopment": "Fonction en développement",
+    "checkBackLater": "Nous travaillons sur cette fonctionnalité. Revenez plus tard !"
   },
-"search": {
+  "payment": {
+    "comingSoon": "Tableau de paiement bientôt disponible",
+    "comingSoonDesc": "Nous construisons un système de gestion de paiement sécurisé et puissant pour vous !",
+    "underDevelopment": "Fonction en développement",
+    "underDevelopmentDesc": "Notre équipe travaille dur pour vous proposer cette fonctionnalité bientôt.",
+    "securePayments": "Paiements sécurisés",
+    "securePaymentsDesc": "Chiffrement de niveau bancaire pour sécuriser vos transactions",
+    "transactionHistory": "Historique des transactions",
+    "transactionHistoryDesc": "Détails complets de tous vos paiements et transferts",
+    "multipleMethods": "Méthodes multiples",
+    "multipleMethodsDesc": "Cartes bancaires, portefeuilles numériques et virements pris en charge",
+    "notifyMe": "Prévenez-moi quand c'est prêt !",
+    "emailPlaceholder": "Votre adresse e-mail",
+    "notifyButton": "Me prévenir",
+    "privacyNote": "Nous l'utiliserons uniquement pour vous notifier. Pas de spam."
+  },
+  "search": {
     "filters": "Filtres",
     "search": "Rechercher",
     "placeholder": "Rechercher des produits...",
     "category": "Catégorie",
     "allCategories": "Toutes les catégories",
-    "priceRange": "Fourchette de prix",
+    "priceRange": "Plage de prix",
     "rating": "Évaluation",
     "rating5": "5 étoiles",
     "rating4": "4 étoiles et plus",
     "rating3": "3 étoiles et plus",
     "rating2": "2 étoiles et plus",
     "rating1": "1 étoile et plus",
-    "inStock": "En stock uniquement",
-    "clearFilters": "Effacer les filtres",
+    "inStock": "Seulement en stock",
+    "clearFilters": "Réinitialiser les filtres",
     "applyFilters": "Appliquer les filtres",
     "previous": "Précédent",
     "next": "Suivant",
-    "showing": "Affichage de produits"
+    "showing": "Affichage des produits"
+  },
+  "adminDashboard": {
+    "title": "Portail Admin",
+    "welcome": "Bon retour",
+    "searchPlaceholder": "Rechercher des utilisateurs",
+    "role": "Administrateur",
+    "sidebar": {
+      "dashboard": "Tableau de bord",
+      "users": "Gestion des utilisateurs",
+      "products": "Catalogue de produits",
+      "addInventory": "Ajouter au stock",
+      "promotions": "Promotions",
+      "orders": "Commandes",
+      "settings": "Paramètres",
+      "signOut": "Se déconnecter"
+    },
+    "notifications": {
+      "new": "Nouvelles notifications"
+    }
   }
 }

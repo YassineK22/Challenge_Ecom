@@ -44,7 +44,7 @@ exports.addToCart = async (req, res) => {
       }
     }
 
-    if (price !== finalPrice)
+    if (Math.abs(price - finalPrice) > 0.01)
       return res.status(400).json({ success: false, message: "Provided price does not match current price" });
 
     let cart = await Cart.findOne({ userId });
@@ -109,7 +109,7 @@ exports.getCartByUserId = async (req, res) => {
       });
 
     if (!cart) {
-      return res.status(200).json({ success: true, message: "Empty cart", data: { items: [], userId } });
+      return res.status(200).json({ success: true, items: [], userId });
     }
 
     const validItems = [];
@@ -118,13 +118,11 @@ exports.getCartByUserId = async (req, res) => {
     await Promise.all(
       cart.items.map(async (item) => {
         const product = await Product.findById(item.productId._id);
-
         if (!product) {
           invalidItemIds.push(item._id);
           return;
         }
 
-        // Calculate final price
         let finalPrice = product.price;
         let promotionDetails = null;
 
@@ -154,13 +152,13 @@ exports.getCartByUserId = async (req, res) => {
       await cart.save();
     }
 
-    const enrichedCart = { ...cart.toObject(), items: validItems };
-    res.status(200).json({ success: true, message: "Cart retrieved", data: enrichedCart });
+    res.status(200).json({ success: true, items: validItems, userId: cart.userId });
   } catch (err) {
     console.error("Get cart error:", err);
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
 
 // Delete an item from cart
 exports.deleteCartItem = async (req, res) => {

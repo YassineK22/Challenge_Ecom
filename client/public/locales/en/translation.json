@@ -17,8 +17,6 @@
         "logout": "Logout",
         "signIn": "Sign In",
         "joinUs": "Join Us",
-        "becomeSeller": "Become Seller",
-        "deliveryTeam": "Delivery Team",
         "signoutSuccess": "Signed out successfully",
         "signoutError": "Failed to sign out"
       },
@@ -39,8 +37,7 @@
       "audio": {
         "title": "Immersive Audio",
         "subtitle": "Studio-quality sound for audiophiles",
-        "buttonText": "Browse",
-        "badgeText": "BESTSELLERS"
+        "buttonText": "Browse"
       }
     },
     "squarePromotions": {
@@ -217,7 +214,6 @@
     "specialOffer": "Special Offer",
     "ecoFriendly": "Eco-friendly packaging",
     "keyFeatures": "Key Features",
-    "unknownSeller": "Unknown Seller",
     "positive": "Positive",
     "freeShipping": "Free shipping",
     "warranty": "1-year warranty",
@@ -238,66 +234,6 @@
     "brand": "Brand",
     "model": "Model",
     "technical": "Technical"
-  },
-  "seller": {
-    "title": "Become a Seller",
-    "subtitle": "Start your journey as a seller by filling out the form below.",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "shopName": "Shop Name",
-    "shopNamePlaceholder": "Enter your shop name",
-    "address": "Headquarters Address",
-    "addressPlaceholder": "Enter your headquarters address",
-    "fiscalId": "Fiscal Identification Card",
-    "tradeRegister": "Trade Register",
-    "submit": "Submit",
-    "submitting": "Submitting...",
-    "or": "OR",
-    "alreadySeller": "Already a seller?",
-    "signIn": "Sign In",
-    "checkStatus": "Want to check your application status?",
-    "clickHere": "Click here",
-    "step1": "Step 1: Fill out your registration request",
-    "step1Desc": "Complete the initial registration form to begin the process.",
-    "step2": "Step 2: Complete the registration form",
-    "step2Desc": "You will receive an email with further instructions and required documents.",
-    "step3": "Step 3: Application Review",
-    "step3Desc": "Our team will carefully review your application and documents.",
-    "step4": "Step 4: Start Selling",
-    "step4Desc": "Once approved, you can start making your first sales on our platform 🥳.",
-    "fileTypeError": "Please upload a PDF file.",
-    "fileSizeError": "File size must be less than 5MB.",
-    "successMessage": "Your application has been submitted successfully! Please wait for our team to review your request. We will contact you via email.",
-    "errorMessage": "Something went wrong!"
-  },
-  "delivery": {
-    "title": "Join Our Delivery Team",
-    "email": "Email",
-    "emailPlaceholder": "your@email.com",
-    "vehicleType": "Vehicle Type",
-    "vehicleTypePlaceholder": "Car, Bike, etc.",
-    "vehicleNumber": "Vehicle Number",
-    "vehicleNumberPlaceholder": "e.g. TN 1234",
-    "deliveryArea": "Delivery Area",
-    "deliveryAreaPlaceholder": "Your working area",
-    "contactNumber": "Contact Number",
-    "contactNumberPlaceholder": "20 123 456",
-    "phoneHint": "Enter your 8-digit Tunisian number",
-    "phoneError": "Please enter a valid 8-digit Tunisian phone number",
-    "cv": "Your CV (PDF)",
-    "submit": "Submit Application",
-    "submitting": "Submitting...",
-    "checkStatus": "Want to check your application status?",
-    "clickHere": "Click here",
-    "fileTypeError": "Please upload a PDF file.",
-    "fileSizeError": "File size must be less than 5MB.",
-    "successMessage": "Application submitted successfully! We'll review your request soon.",
-    "errorMessage": "Something went wrong!",
-    "benefitsTitle": "Deliver With Us",
-    "benefitsSubtitle": "Earn competitive pay with flexible hours while delivering happiness to customers across Tunisia.",
-    "benefit1": "Flexible working hours",
-    "benefit2": "Competitive earnings",
-    "benefit3": "Weekly payments"
   },
   "cart": {
     "title": "Your Cart",
@@ -446,88 +382,27 @@
         "details": "Check your email for more information."
       },
       "label": "Status: {status}"
-    },
-    "becomeSeller": {
-      "text": "Want to become a seller?",
-      "link": "Click here to apply"
     }
   },
   "adminDashboard": {
-    "title": "Admin Portal",
-    "welcome": "Welcome back",
-    "searchPlaceholder": "Search users, sellers...",
-    "role": "Administrator",
-    "sidebar": {
-      "dashboard": "Dashboard",
-      "users": "User Management",
-      "sellers": "Sellers",
-      "deliveries": "Deliveries",
-      "analytics": "Analytics",
-      "settings": "Settings",
-      "signOut": "Sign Out"
-    },
-    "notifications": {
-      "new": "New notifications"
-    }
+  "title": "Admin Portal",
+  "welcome": "Welcome back",
+  "searchPlaceholder": "Search users",
+  "role": "Administrator",
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "users": "User Management",
+    "products": "Product Catalog",
+    "addInventory": "Add Inventory",
+    "promotions": "Promotions",
+    "orders": "Orders",
+    "settings": "Settings",
+    "signOut": "Sign Out"
   },
-  "sellerDashboard": {
-    "title": "Seller Hub",
-    "welcome": "Welcome back",
-    "searchPlaceholder": "Search products, orders...",
-    "role": "Premium Seller",
-    "sidebar": {
-      "dashboard": "Dashboard",
-      "products": "Product Catalog",
-      "addInventory": "Add Inventory",
-      "promotions": "Promotions",
-      "orders": "Orders",
-      "customers": "Customers",
-      "sales": "Sales",
-      "analytics": "Analytics",
-      "settings": "Settings",
-      "signOut": "Sign Out"
-    },
-    "notifications": {
-      "new": "New notifications"
-    }
-  },
-
- "deliveryDashboard": {
-    "title": "Delivery Hub",
-    "welcome": "Welcome back ",
-    "searchPlaceholder": "Search deliveries...",
-    "role": "Delivery Partner",
-    "sidebar": {
-      "dashboard": "Dashboard",
-      "deliveries": "Deliveries",
-      "assigned": "Assigned Deliveries",
-      "history": "Delivery History",
-      "settings": "Settings",
-      "signOut": "Sign Out"
-    },
-    "notifications": {
-      "new": "New notifications"
-    }
-  },
-  "sellerProductsPage": {
-    "loading": "Loading...",
-    "error": "Error loading products",
-    "noProducts": "No products found for this seller",
-    "shopHeader": {
-      "defaultShopName": "Seller Shop",
-      "productsAvailable": {
-        "one": "product available",
-        "other": "products available"
-      }
-    },
-    "emptyState": "No products available from this seller",
-    "wishlistMessages": {
-      "loginRequired": "You must log in to manage your wishlist",
-      "added": "Added to wishlist",
-      "removed": "Removed from wishlist",
-      "updateError": "Failed to update wishlist"
-    }
-  },
+  "notifications": {
+    "new": "New notifications"
+  }
+},
 
 "setPassword": {
     "title": "Set Your Password",
@@ -544,16 +419,6 @@
       "minLength": "Password must be at least 8 characters",
       "requirements": "Must include uppercase, lowercase, number, and special character"
     }
-  },
-  "forgotPassword": {
-    "title": "Forgot Password",
-    "subtitle": "Enter your email to reset your password",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Enter your email",
-    "submitButton": "Send Reset Link",
-    "backButton": "Back to Sign In",
-    "success": "Password reset email sent. Check your inbox.",
-    "error": "Something went wrong!"
   },
 "productReviews": {
     "title": "Customer Reviews",
@@ -743,7 +608,6 @@
     },
     "yourPurchases": "Your Purchases",
     "items": "items",
-    "seller": "Seller",
     "suborderStatus": "Package Status",
     "suborderSummary": "Package Summary",
     "viewProduct": "View Product",

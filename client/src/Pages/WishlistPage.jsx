@@ -110,7 +110,7 @@ const WishlistPage = () => {
             <motion.div
               animate={{ scale: [1, 1.2, 1], rotate: [0, 15, -15, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              className="p-3 rounded-full bg-gradient-to-br from-pink-200 to-purple-200 shadow-lg"
+              className="p-3 rounded-full bg-linear-to-br from-pink-200 to-purple-200 shadow-lg"
             >
               <FaHeart className="text-xl text-pink-600" />
             </motion.div>
@@ -148,7 +148,7 @@ const WishlistPage = () => {
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">{t("wishlist.emptyWishlist.title")}</h3>
             <p className="text-gray-500 mb-6">{t("wishlist.emptyWishlist.description")}</p>
-            <button onClick={() => navigate("/products")} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-lg hover:shadow-lg transition-all">
+            <button onClick={() => navigate("/products")} className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-purple-500 to-indigo-500 text-white rounded-lg hover:shadow-lg transition-all">
               <FaShoppingBag />
               <span>{t("wishlist.emptyWishlist.button")}</span>
             </button>

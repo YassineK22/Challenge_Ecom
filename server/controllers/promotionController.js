@@ -30,7 +30,7 @@ const createPromotion = async (req, res) => {
     upload(req, res, async (err) => {
       if (err) return res.status(400).json({ message: err.message });
 
-      const { name, discountRate, startDate, endDate, applicableProducts } = req.body;
+      const { name, discountRate, startDate, endDate, applicableProducts, createdBy } = req.body;
 
       if (!name || !discountRate || !startDate || !endDate || !req.file || !applicableProducts) {
         return res.status(400).json({ message: "All fields and an image are required" });
@@ -82,6 +82,7 @@ const createPromotion = async (req, res) => {
         startDate: start,
         endDate: end,
         applicableProducts: productIds,
+        createdBy,
       });
 
       await promotion.save();

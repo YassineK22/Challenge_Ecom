@@ -46,7 +46,12 @@ exports.getAllProducts = async (req, res) => {
         path: "categoryDetails.category",
         select: "name",
       })
+      .populate("tags", "name")
       .populate("createdBy")
+      .populate({
+        path: "activePromotion", 
+        select: "name discountRate startDate endDate image isActive",
+      })
       .lean();
 
     const transformedProducts = products.map(transformProductData);
@@ -71,6 +76,11 @@ exports.getProductById = async (req, res) => {
         select: "name",
       })
       .populate("createdBy")
+      .populate("tags", "name")
+      .populate({
+        path: "activePromotion", // or 'promotion' if your schema uses that
+        select: "name discountRate startDate endDate image isActive",
+      })
       .lean();
 
     if (!product) {
@@ -98,6 +108,11 @@ exports.getProductByReference = async (req, res) => {
         path: "categoryDetails.category",
         select: "name",
       })
+      .populate({
+        path: "activePromotion", 
+        select: "name discountRate startDate endDate image isActive",
+      })
+      .populate("reviews", "rating comment createdAt userName")
       .populate("createdBy");
 
     if (!product) {
@@ -160,6 +175,8 @@ exports.createProduct = async (req, res) => {
       reference: req.body.reference,
       name: req.body.name,
       description: req.body.description,
+      price: req.body.price,
+      stock: req.body.stock,
       images: uploadedImages,
       createdBy: req.body.createdBy,
       categoryDetails: {
@@ -169,7 +186,9 @@ exports.createProduct = async (req, res) => {
           item: req.body.categoryDetails.subcategory.item,
         },
       },
+      tags: req.body.tags || [],  // <-- ADD THIS
     };
+
 
     const product = await Product.create(productData);
     const transformedProduct = transformProductData(product);
@@ -189,6 +208,9 @@ exports.updateProduct = async (req, res) => {
     const productData = {
       name: req.body.name,
       description: req.body.description,
+      price: req.body.price,     // ✅ add this
+      stock: req.body.stock,     // ✅ add this
+      warranty: req.body.warranty, // ✅ add this
     };
 
     if (req.body.categoryDetails) {

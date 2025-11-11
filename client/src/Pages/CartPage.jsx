@@ -35,18 +35,21 @@ const CartPage = () => {
           const response = await axios.get(
             `${API_URL}?userId=${currentUser.id}&populate=productId`
           );
-          const validItems = response.data.items
-            .filter((item) => item._id && item.productId?._id)
-            .map((item) => ({
+          const validItems = response.data.items.map((item) => {
+            const product = item.productId || {};
+            return {
               ...item,
               productId: {
-                ...item.productId,
-                images: item.productId.images || [],
+                _id: product._id || product.id,
+                name: product.name || "Unnamed Product",
+                images: product.images || [],
+                stock: product.stock || 0,
               },
-              inStock: item.stock > 0,
-            }));
+              inStock: (product.stock || 0) > 0,
+            };
+          });
 
-          dispatch(setCart(validItems));
+          dispatch(setCart(validItems)); // <-- add this
           setError(null);
         } catch (err) {
           if (err.response?.status >= 500) {
