@@ -113,7 +113,6 @@ exports.getProductByReference = async (req, res) => {
         path: "activePromotion",
         select: "name discountRate startDate endDate image isActive",
       })
-      .populate("reviews", "rating comment createdAt userName")
       .populate("createdBy");
 
     if (!product) {
